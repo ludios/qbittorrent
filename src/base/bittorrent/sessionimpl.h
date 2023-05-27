@@ -333,9 +333,9 @@ namespace BitTorrent
         bool ignoreSlowTorrentsForQueueing() const override;
         void setIgnoreSlowTorrentsForQueueing(bool ignore) override;
         int downloadRateForSlowTorrents() const override;
-        void setDownloadRateForSlowTorrents(int rateInKibiBytes) override;
+        void setDownloadRateForSlowTorrents(int rateInKiloBytes) override;
         int uploadRateForSlowTorrents() const override;
-        void setUploadRateForSlowTorrents(int rateInKibiBytes) override;
+        void setUploadRateForSlowTorrents(int rateInKiloBytes) override;
         int slowTorrentsInactivityTimer() const override;
         void setSlowTorrentsInactivityTimer(int timeInSeconds) override;
         int outgoingPortsMin() const override;

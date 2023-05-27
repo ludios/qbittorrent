@@ -1548,8 +1548,8 @@ void MainWindow::reloadSessionStats()
     }
 #else
     const auto toolTip = u"%1\n%2"_s.arg(
-        tr("DL speed: %1", "e.g: Download speed: 10 KiB/s").arg(Utils::Misc::friendlyUnit(status.payloadDownloadRate, true))
-        , tr("UP speed: %1", "e.g: Upload speed: 10 KiB/s").arg(Utils::Misc::friendlyUnit(status.payloadUploadRate, true)));
+        tr("DL speed: %1", "e.g: Download speed: 10 KB/s").arg(Utils::Misc::friendlyUnit(status.payloadDownloadRate, true))
+        , tr("UP speed: %1", "e.g: Upload speed: 10 KB/s").arg(Utils::Misc::friendlyUnit(status.payloadUploadRate, true)));
     app()->desktopIntegration()->setToolTip(toolTip); // tray icon
 #endif  // Q_OS_MACOS
 

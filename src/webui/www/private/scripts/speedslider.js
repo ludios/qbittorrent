@@ -41,7 +41,7 @@ MochaUI.extend({
                     if (data) {
                         const tmp = data.toInt();
                         if (tmp > 0) {
-                            maximum = tmp / 1024.0;
+                            maximum = tmp / 1000.0;
                         }
                         else {
                             if (hashes[0] == "global")
@@ -103,7 +103,7 @@ MochaUI.extend({
                                     new Slider($('uplimitSliderarea'), $('uplimitSliderknob'), {
                                         steps: maximum,
                                         offset: 0,
-                                        initialStep: (up_limit / 1024.0).round(),
+                                        initialStep: (up_limit / 1000.0).round(),
                                         onChange: function(pos) {
                                             if (pos > 0) {
                                                 $('uplimitUpdatevalue').value = pos;
@@ -121,7 +121,7 @@ MochaUI.extend({
                                         $('upLimitUnit').style.visibility = "hidden";
                                     }
                                     else {
-                                        $('uplimitUpdatevalue').value = (up_limit / 1024.0).round();
+                                        $('uplimitUpdatevalue').value = (up_limit / 1000.0).round();
                                         $('upLimitUnit').style.visibility = "visible";
                                     }
                                 }
@@ -145,7 +145,7 @@ MochaUI.extend({
                     if (data) {
                         const tmp = data.toInt();
                         if (tmp > 0) {
-                            maximum = tmp / 1024.0;
+                            maximum = tmp / 1000.0;
                         }
                         else {
                             if (hashes[0] == "global")
@@ -207,7 +207,7 @@ MochaUI.extend({
                                     new Slider($('dllimitSliderarea'), $('dllimitSliderknob'), {
                                         steps: maximum,
                                         offset: 0,
-                                        initialStep: (dl_limit / 1024.0).round(),
+                                        initialStep: (dl_limit / 1000.0).round(),
                                         onChange: function(pos) {
                                             if (pos > 0) {
                                                 $('dllimitUpdatevalue').value = pos;
@@ -225,7 +225,7 @@ MochaUI.extend({
                                         $('dlLimitUnit').style.visibility = "hidden";
                                     }
                                     else {
-                                        $('dllimitUpdatevalue').value = (dl_limit / 1024.0).round();
+                                        $('dllimitUpdatevalue').value = (dl_limit / 1000.0).round();
                                         $('dlLimitUnit').style.visibility = "visible";
                                     }
                                 }

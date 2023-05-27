@@ -57,30 +57,30 @@ window.qBittorrent.Misc = (function() {
      */
     const friendlyUnit = function(value, isSpeed) {
         const units = [
-            "QBT_TR(B)QBT_TR[CONTEXT=misc]",
-            "QBT_TR(KiB)QBT_TR[CONTEXT=misc]",
-            "QBT_TR(MiB)QBT_TR[CONTEXT=misc]",
-            "QBT_TR(GiB)QBT_TR[CONTEXT=misc]",
-            "QBT_TR(TiB)QBT_TR[CONTEXT=misc]",
-            "QBT_TR(PiB)QBT_TR[CONTEXT=misc]",
-            "QBT_TR(EiB)QBT_TR[CONTEXT=misc]"
+            "B",
+            "KB",
+            "MB",
+            "GB",
+            "TB",
+            "PB",
+            "EB"
         ];
 
         if ((value === undefined) || (value === null) || (value < 0))
-            return "QBT_TR(Unknown)QBT_TR[CONTEXT=misc]";
+            return "Unknown";
 
         let i = 0;
-        while (value >= 1024.0 && i < 6) {
-            value /= 1024.0;
+        while (value >= 1000.0 && i < 6) {
+            value /= 1000.0;
             ++i;
         }
 
         function friendlyUnitPrecision(sizeUnit) {
-            if (sizeUnit <= 2) // KiB, MiB
+            if (sizeUnit <= 2) // KB, MB
                 return 1;
-            else if (sizeUnit === 3) // GiB
+            else if (sizeUnit === 3) // GB
                 return 2;
-            else // TiB, PiB, EiB
+            else // TB, PB, EB
                 return 3;
         }
 
@@ -95,7 +95,7 @@ window.qBittorrent.Misc = (function() {
         }
 
         if (isSpeed)
-            ret += "QBT_TR(/s)QBT_TR[CONTEXT=misc]";
+            ret += "/s";
         return ret;
     };
 

@@ -157,7 +157,7 @@ BitTorrent::TorrentFormat TorrentCreatorDialog::getTorrentFormat() const
 int TorrentCreatorDialog::getPaddedFileSizeLimit() const
 {
     const int value = m_ui->spinPaddedFileSizeLimit->value();
-    return ((value >= 0) ? (value * 1024) : -1);
+    return ((value >= 0) ? (value * 1000) : -1);
 }
 #endif
 

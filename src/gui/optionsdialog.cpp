@@ -335,7 +335,7 @@ void OptionsDialog::loadBehaviorTabOptions()
     m_ui->checkFileLogDelete->setChecked(fileLogDelete);
     m_ui->spinFileLogAge->setEnabled(fileLogDelete);
     m_ui->comboFileLogAgeType->setEnabled(fileLogDelete);
-    m_ui->spinFileLogSize->setValue(app()->fileLoggerMaxSize() / 1024);
+    m_ui->spinFileLogSize->setValue(app()->fileLoggerMaxSize() / 1000);
     m_ui->spinFileLogAge->setValue(app()->fileLoggerAge());
     m_ui->comboFileLogAgeType->setCurrentIndex(app()->fileLoggerAgeType());
     // Groupbox's check state  must be initialized after some of its children if they are manually enabled/disabled
@@ -490,7 +490,7 @@ void OptionsDialog::saveBehaviorTabOptions() const
 
     app()->setFileLoggerPath(m_ui->textFileLogPath->selectedPath());
     app()->setFileLoggerBackup(m_ui->checkFileLogBackup->isChecked());
-    app()->setFileLoggerMaxSize(m_ui->spinFileLogSize->value() * 1024);
+    app()->setFileLoggerMaxSize(m_ui->spinFileLogSize->value() * 1000);
     app()->setFileLoggerAge(m_ui->spinFileLogAge->value());
     app()->setFileLoggerAgeType(m_ui->comboFileLogAgeType->currentIndex());
     app()->setFileLoggerDeleteOld(m_ui->checkFileLogDelete->isChecked());
@@ -967,12 +967,12 @@ void OptionsDialog::loadSpeedTabOptions()
     const auto *session = BitTorrent::Session::instance();
 
     m_ui->labelGlobalRate->setPixmap(UIThemeManager::instance()->getScaledPixmap(u"slow_off"_s, Utils::Gui::mediumIconSize(this).height()));
-    m_ui->spinUploadLimit->setValue(session->globalUploadSpeedLimit() / 1024);
-    m_ui->spinDownloadLimit->setValue(session->globalDownloadSpeedLimit() / 1024);
+    m_ui->spinUploadLimit->setValue(session->globalUploadSpeedLimit() / 1000);
+    m_ui->spinDownloadLimit->setValue(session->globalDownloadSpeedLimit() / 1000);
 
     m_ui->labelAltRate->setPixmap(UIThemeManager::instance()->getScaledPixmap(u"slow"_s, Utils::Gui::mediumIconSize(this).height()));
-    m_ui->spinUploadLimitAlt->setValue(session->altGlobalUploadSpeedLimit() / 1024);
-    m_ui->spinDownloadLimitAlt->setValue(session->altGlobalDownloadSpeedLimit() / 1024);
+    m_ui->spinUploadLimitAlt->setValue(session->altGlobalUploadSpeedLimit() / 1000);
+    m_ui->spinDownloadLimitAlt->setValue(session->altGlobalDownloadSpeedLimit() / 1000);
 
     m_ui->comboBoxScheduleDays->addItems(translatedWeekdayNames());
 
@@ -1006,11 +1006,11 @@ void OptionsDialog::saveSpeedTabOptions() const
     auto *pref = Preferences::instance();
     auto *session = BitTorrent::Session::instance();
 
-    session->setGlobalUploadSpeedLimit(m_ui->spinUploadLimit->value() * 1024);
-    session->setGlobalDownloadSpeedLimit(m_ui->spinDownloadLimit->value() * 1024);
+    session->setGlobalUploadSpeedLimit(m_ui->spinUploadLimit->value() * 1000);
+    session->setGlobalDownloadSpeedLimit(m_ui->spinDownloadLimit->value() * 1000);
 
-    session->setAltGlobalUploadSpeedLimit(m_ui->spinUploadLimitAlt->value() * 1024);
-    session->setAltGlobalDownloadSpeedLimit(m_ui->spinDownloadLimitAlt->value() * 1024);
+    session->setAltGlobalUploadSpeedLimit(m_ui->spinUploadLimitAlt->value() * 1000);
+    session->setAltGlobalDownloadSpeedLimit(m_ui->spinDownloadLimitAlt->value() * 1000);
 
     session->setBandwidthSchedulerEnabled(m_ui->groupBoxSchedule->isChecked());
     pref->setSchedulerStartTime(m_ui->timeEditScheduleFrom->time());

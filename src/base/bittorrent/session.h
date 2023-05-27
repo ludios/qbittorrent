@@ -354,9 +354,9 @@ namespace BitTorrent
         virtual bool ignoreSlowTorrentsForQueueing() const = 0;
         virtual void setIgnoreSlowTorrentsForQueueing(bool ignore) = 0;
         virtual int downloadRateForSlowTorrents() const = 0;
-        virtual void setDownloadRateForSlowTorrents(int rateInKibiBytes) = 0;
+        virtual void setDownloadRateForSlowTorrents(int rateInKiloBytes) = 0;
         virtual int uploadRateForSlowTorrents() const = 0;
-        virtual void setUploadRateForSlowTorrents(int rateInKibiBytes) = 0;
+        virtual void setUploadRateForSlowTorrents(int rateInKiloBytes) = 0;
         virtual int slowTorrentsInactivityTimer() const = 0;
         virtual void setSlowTorrentsInactivityTimer(int timeInSeconds) = 0;
         virtual int outgoingPortsMin() const = 0;

@@ -47,7 +47,7 @@
          <string>∞</string>
         </property>
         <property name="suffix">
-         <string> KiB/s</string>
+         <string> KB/s</string>
         </property>
         <property name="maximum">
          <number>2000000</number>
@@ -74,7 +74,7 @@
          <string>∞</string>
         </property>
         <property name="suffix">
-         <string> KiB/s</string>
+         <string> KB/s</string>
         </property>
         <property name="maximum">
          <number>2000000</number>
@@ -117,7 +117,7 @@
          <string>∞</string>
         </property>
         <property name="suffix">
-         <string> KiB/s</string>
+         <string> KB/s</string>
         </property>
         <property name="maximum">
          <number>2000000</number>
@@ -144,7 +144,7 @@
          <string>∞</string>
         </property>
         <property name="suffix">
-         <string> KiB/s</string>
+         <string> KB/s</string>
         </property>
         <property name="maximum">
          <number>2000000</number>

@@ -75,17 +75,15 @@ namespace
     const struct { const char *source; const char *comment; } units[] =
     {
         QT_TRANSLATE_NOOP3("misc", "B", "bytes"),
-        QT_TRANSLATE_NOOP3("misc", "KiB", "kibibytes (1024 bytes)"),
-        QT_TRANSLATE_NOOP3("misc", "MiB", "mebibytes (1024 kibibytes)"),
-        QT_TRANSLATE_NOOP3("misc", "GiB", "gibibytes (1024 mibibytes)"),
-        QT_TRANSLATE_NOOP3("misc", "TiB", "tebibytes (1024 gibibytes)"),
-        QT_TRANSLATE_NOOP3("misc", "PiB", "pebibytes (1024 tebibytes)"),
-        QT_TRANSLATE_NOOP3("misc", "EiB", "exbibytes (1024 pebibytes)")
+        QT_TRANSLATE_NOOP3("misc", "KB", "kilobytes (1000 bytes)"),
+        QT_TRANSLATE_NOOP3("misc", "MB", "megabytes (1000 kilobytes)"),
+        QT_TRANSLATE_NOOP3("misc", "GB", "gigabytes (1000 megabytes)"),
+        QT_TRANSLATE_NOOP3("misc", "TB", "terabytes (1000 gigabytes)"),
+        QT_TRANSLATE_NOOP3("misc", "PB", "petabytes (1000 terabytes)"),
+        QT_TRANSLATE_NOOP3("misc", "EB", "exabytes (1000 petabytes)")
     };
 
-    // return best userfriendly storage unit (B, KiB, MiB, GiB, TiB, ...)
-    // use Binary prefix standards from IEC 60027-2
-    // see http://en.wikipedia.org/wiki/Kilobyte
+    // return best userfriendly storage unit (B, KB, MB, GB, TB, ...)
     // value must be given in bytes
     // to send numbers instead of strings with suffixes
     struct SplitToFriendlyUnitResult
@@ -102,9 +100,9 @@ namespace
         int i = 0;
         auto value = static_cast<qreal>(bytes);
 
-        while ((value >= 1024) && (i < static_cast<int>(Utils::Misc::SizeUnit::ExbiByte)))
+        while ((value >= 1000) && (i < static_cast<int>(Utils::Misc::SizeUnit::ExaByte)))
         {
-            value /= 1024;
+            value /= 1000;
             ++i;
         }
         return {{value, static_cast<Utils::Misc::SizeUnit>(i)}};
@@ -279,10 +277,10 @@ int Utils::Misc::friendlyUnitPrecision(const SizeUnit unit)
     {
     case SizeUnit::Byte:
         return 0;
-    case SizeUnit::KibiByte:
-    case SizeUnit::MebiByte:
+    case SizeUnit::KiloByte:
+    case SizeUnit::MegaByte:
         return 1;
-    case SizeUnit::GibiByte:
+    case SizeUnit::GigaByte:
         return 2;
     default:
         return 3;
@@ -292,7 +290,7 @@ int Utils::Misc::friendlyUnitPrecision(const SizeUnit unit)
 qlonglong Utils::Misc::sizeInBytes(qreal size, const Utils::Misc::SizeUnit unit)
 {
     for (int i = 0; i < static_cast<int>(unit); ++i)
-        size *= 1024;
+        size *= 1000;
     return size;
 }
 

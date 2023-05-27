@@ -490,11 +490,11 @@
                     <img src="images/slow_off.svg" style="height: 1.5em;" alt="QBT_TR(Alternative speed limits)QBT_TR[CONTEXT=MainWindow]">
                 </td>
                 <td><label for="up_limit_value">QBT_TR(Upload:)QBT_TR[CONTEXT=OptionsDialog]</label></td>
-                <td><input type="number" id="up_limit_value" style="width: 4em;" min="0" />&nbsp;&nbsp;QBT_TR(KiB/s)QBT_TR[CONTEXT=OptionsDialog]</td>
+                <td><input type="number" id="up_limit_value" style="width: 4em;" min="0" />&nbsp;&nbsp;KB/s</td>
             </tr>
             <tr>
                 <td><label for="dl_limit_value">QBT_TR(Download:)QBT_TR[CONTEXT=OptionsDialog]</label></td>
-                <td><input type="number" id="dl_limit_value" style="width: 4em;" min="0" />&nbsp;&nbsp;QBT_TR(KiB/s)QBT_TR[CONTEXT=OptionsDialog]</td>
+                <td><input type="number" id="dl_limit_value" style="width: 4em;" min="0" />&nbsp;&nbsp;KB/s</td>
             </tr>
         </table>
         <i>QBT_TR(0 means unlimited)QBT_TR[CONTEXT=OptionsDialog]</i>
@@ -508,11 +508,11 @@
                     <img src="images/slow.svg" style="height: 1.5em;" alt="QBT_TR(Alternative speed limits)QBT_TR[CONTEXT=MainWindow]">
                 </td>
                 <td><label for="alt_up_limit_value">QBT_TR(Upload:)QBT_TR[CONTEXT=OptionsDialog]</label></td>
-                <td><input type="number" id="alt_up_limit_value" style="width: 4em;" min="0" />&nbsp;&nbsp;QBT_TR(KiB/s)QBT_TR[CONTEXT=OptionsDialog]</td>
+                <td><input type="number" id="alt_up_limit_value" style="width: 4em;" min="0" />&nbsp;&nbsp;KB/s</td>
             </tr>
             <tr>
                 <td><label for="alt_dl_limit_value">QBT_TR(Download:)QBT_TR[CONTEXT=OptionsDialog]</label></td>
-                <td><input type="number" id="alt_dl_limit_value" style="width: 4em;" min="0" />&nbsp;&nbsp;QBT_TR(KiB/s)QBT_TR[CONTEXT=OptionsDialog]</td>
+                <td><input type="number" id="alt_dl_limit_value" style="width: 4em;" min="0" />&nbsp;&nbsp;KB/s</td>
             </tr>
         </table>
         <i>QBT_TR(0 means unlimited)QBT_TR[CONTEXT=OptionsDialog]</i>
@@ -639,7 +639,7 @@
                         <label for="dl_rate_threshold">QBT_TR(Download rate threshold:)QBT_TR[CONTEXT=OptionsDialog]</label>
                     </td>
                     <td>
-                        <input type="text" id="dl_rate_threshold" style="width: 4em;" />&nbsp;&nbsp;QBT_TR(KiB/s)QBT_TR[CONTEXT=OptionsDialog]
+                        <input type="text" id="dl_rate_threshold" style="width: 4em;" />&nbsp;&nbsp;KB/s
                     </td>
                 </tr>
                 <tr>
@@ -647,7 +647,7 @@
                         <label for="ul_rate_threshold">QBT_TR(Upload rate threshold:)QBT_TR[CONTEXT=OptionsDialog]</label>
                     </td>
                     <td>
-                        <input type="text" id="ul_rate_threshold" style="width: 4em;" />&nbsp;&nbsp;QBT_TR(KiB/s)QBT_TR[CONTEXT=OptionsDialog]
+                        <input type="text" id="ul_rate_threshold" style="width: 4em;" />&nbsp;&nbsp;KB/s
                     </td>
                 </tr>
                 <tr>
@@ -984,7 +984,7 @@ Use ';' to split multiple entries. Can use wildcard '*'.)QBT_TR[CONTEXT=OptionsD
                     <label for="memoryWorkingSetLimit">QBT_TR(Physical memory (RAM) usage limit (applied if libtorrent &gt;= 2.0):)QBT_TR[CONTEXT=OptionsDialog]&nbsp;<a href="https://wikipedia.org/wiki/Working_set" target="_blank">(?)</a></label>
                 </td>
                 <td>
-                    <input type="text" id="memoryWorkingSetLimit" style="width: 15em;" title="QBT_TR(This option is less effective on Linux)QBT_TR[CONTEXT=OptionsDialog]">&nbsp;&nbsp;QBT_TR(MiB)QBT_TR[CONTEXT=OptionsDialog]
+                    <input type="text" id="memoryWorkingSetLimit" style="width: 15em;" title="QBT_TR(This option is less effective on Linux)QBT_TR[CONTEXT=OptionsDialog]">&nbsp;&nbsp;MB/s
                 </td>
             </tr>
             <tr>
@@ -1127,7 +1127,7 @@ Use ';' to split multiple entries. Can use wildcard '*'.)QBT_TR[CONTEXT=OptionsD
                     <label for="outstandMemoryWhenCheckingTorrents">QBT_TR(Outstanding memory when checking torrents:)QBT_TR[CONTEXT=OptionsDialog]&nbsp;<a href="https://www.libtorrent.org/reference-Settings.html#checking_mem_usage" target="_blank">(?)</a></label>
                 </td>
                 <td>
-                    <input type="text" id="outstandMemoryWhenCheckingTorrents" style="width: 15em;" />&nbsp;&nbsp;QBT_TR(MiB)QBT_TR[CONTEXT=OptionsDialog]
+                    <input type="text" id="outstandMemoryWhenCheckingTorrents" style="width: 15em;" />&nbsp;&nbsp;MB
                 </td>
             </tr>
             <tr>
@@ -1135,7 +1135,7 @@ Use ';' to split multiple entries. Can use wildcard '*'.)QBT_TR[CONTEXT=OptionsD
                     <label for="diskCache">QBT_TR(Disk cache (requires libtorrent &lt; 2.0):)QBT_TR[CONTEXT=OptionsDialog]&nbsp;<a href="https://www.libtorrent.org/reference-Settings.html#cache_size" target="_blank">(?)</a></label>
                 </td>
                 <td>
-                    <input type="text" id="diskCache" style="width: 15em;" />&nbsp;&nbsp;QBT_TR(MiB)QBT_TR[CONTEXT=OptionsDialog]
+                    <input type="text" id="diskCache" style="width: 15em;" />&nbsp;&nbsp;MB
                 </td>
             </tr>
             <tr>
@@ -1151,7 +1151,7 @@ Use ';' to split multiple entries. Can use wildcard '*'.)QBT_TR[CONTEXT=OptionsD
                     <label for="diskQueueSize">QBT_TR(Disk queue size:)QBT_TR[CONTEXT=OptionsDialog]&nbsp;<a href="https://www.libtorrent.org/reference-Settings.html#max_queued_disk_bytes" target="_blank">(?)</a></label>
                 </td>
                 <td>
-                    <input type="text" id="diskQueueSize" style="width: 15em;">&nbsp;&nbsp;QBT_TR(KiB)QBT_TR[CONTEXT=OptionsDialog]
+                    <input type="text" id="diskQueueSize" style="width: 15em;">&nbsp;&nbsp;KB
                 </td>
             </tr>
             <tr>
@@ -1218,7 +1218,7 @@ Use ';' to split multiple entries. Can use wildcard '*'.)QBT_TR[CONTEXT=OptionsD
                     <label for="sendBufferWatermark">QBT_TR(Send buffer watermark:)QBT_TR[CONTEXT=OptionsDialog]&nbsp;<a href="https://www.libtorrent.org/reference-Settings.html#send_buffer_watermark" target="_blank">(?)</a></label>
                 </td>
                 <td>
-                    <input type="text" id="sendBufferWatermark" style="width: 15em;" />&nbsp;&nbsp;QBT_TR(KiB)QBT_TR[CONTEXT=OptionsDialog]
+                    <input type="text" id="sendBufferWatermark" style="width: 15em;" />&nbsp;&nbsp;KB
                 </td>
             </tr>
             <tr>
@@ -1226,7 +1226,7 @@ Use ';' to split multiple entries. Can use wildcard '*'.)QBT_TR[CONTEXT=OptionsD
                     <label for="sendBufferLowWatermark">QBT_TR(Send buffer low watermark:)QBT_TR[CONTEXT=OptionsDialog]&nbsp;<a href="https://www.libtorrent.org/reference-Settings.html#send_buffer_low_watermark" target="_blank">(?)</a></label>
                 </td>
                 <td>
-                    <input type="text" id="sendBufferLowWatermark" style="width: 15em;" />&nbsp;&nbsp;QBT_TR(KiB)QBT_TR[CONTEXT=OptionsDialog]
+                    <input type="text" id="sendBufferLowWatermark" style="width: 15em;" />&nbsp;&nbsp;KB
                 </td>
             </tr>
             <tr>
@@ -2120,11 +2120,11 @@ Use ';' to split multiple entries. Can use wildcard '*'.)QBT_TR[CONTEXT=OptionsD
 
                         // Speed tab
                         // Global Rate Limits
-                        $('up_limit_value').setProperty('value', (pref.up_limit.toInt() / 1024));
-                        $('dl_limit_value').setProperty('value', (pref.dl_limit.toInt() / 1024));
+                        $('up_limit_value').setProperty('value', (pref.up_limit.toInt() / 1000));
+                        $('dl_limit_value').setProperty('value', (pref.dl_limit.toInt() / 1000));
                         // Alternative Global Rate Limits
-                        $('alt_up_limit_value').setProperty('value', (pref.alt_up_limit.toInt() / 1024));
-                        $('alt_dl_limit_value').setProperty('value', (pref.alt_dl_limit.toInt() / 1024));
+                        $('alt_up_limit_value').setProperty('value', (pref.alt_up_limit.toInt() / 1000));
+                        $('alt_dl_limit_value').setProperty('value', (pref.alt_dl_limit.toInt() / 1000));
 
                         $('enable_protocol_combobox').setProperty('value', pref.bittorrent_protocol);
                         $('limit_utp_rate_checkbox').setProperty('checked', pref.limit_utp_rate);
@@ -2277,7 +2277,7 @@ Use ';' to split multiple entries. Can use wildcard '*'.)QBT_TR[CONTEXT=OptionsD
                         $('outstandMemoryWhenCheckingTorrents').setProperty('value', pref.checking_memory_use);
                         $('diskCache').setProperty('value', pref.disk_cache);
                         $('diskCacheExpiryInterval').setProperty('value', pref.disk_cache_ttl);
-                        $('diskQueueSize').setProperty('value', (pref.disk_queue_size / 1024));
+                        $('diskQueueSize').setProperty('value', (pref.disk_queue_size / 1000));
                         $('diskIOType').setProperty('value', pref.disk_io_type);
                         $('diskIOReadMode').setProperty('value', pref.disk_io_read_mode);
                         $('diskIOWriteMode').setProperty('value', pref.disk_io_write_mode);
@@ -2465,14 +2465,14 @@ Use ';' to split multiple entries. Can use wildcard '*'.)QBT_TR[CONTEXT=OptionsD
 
             // Speed tab
             // Global Rate Limits
-            const up_limit = $('up_limit_value').getProperty('value').toInt() * 1024;
+            const up_limit = $('up_limit_value').getProperty('value').toInt() * 1000;
             if (isNaN(up_limit) || up_limit < 0) {
                 alert("QBT_TR(Global upload rate limit must be greater than 0 or disabled.)QBT_TR[CONTEXT=HttpServer]");
                 return;
             }
             settings.set('up_limit', up_limit);
 
-            const dl_limit = $('dl_limit_value').getProperty('value').toInt() * 1024;
+            const dl_limit = $('dl_limit_value').getProperty('value').toInt() * 1000;
             if (isNaN(dl_limit) || dl_limit < 0) {
                 alert("QBT_TR(Global download rate limit must be greater than 0 or disabled.)QBT_TR[CONTEXT=HttpServer]");
                 return;
@@ -2480,14 +2480,14 @@ Use ';' to split multiple entries. Can use wildcard '*'.)QBT_TR[CONTEXT=OptionsD
             settings.set('dl_limit', dl_limit);
 
             // Alternative Global Rate Limits
-            const alt_up_limit = $('alt_up_limit_value').getProperty('value').toInt() * 1024;
+            const alt_up_limit = $('alt_up_limit_value').getProperty('value').toInt() * 1000;
             if (isNaN(alt_up_limit) || alt_up_limit < 0) {
                 alert("QBT_TR(Alternative upload rate limit must be greater than 0 or disabled.)QBT_TR[CONTEXT=HttpServer]");
                 return;
             }
             settings.set('alt_up_limit', alt_up_limit);
 
-            const alt_dl_limit = $('alt_dl_limit_value').getProperty('value').toInt() * 1024;
+            const alt_dl_limit = $('alt_dl_limit_value').getProperty('value').toInt() * 1000;
             if (isNaN(alt_dl_limit) || alt_dl_limit < 0) {
                 alert("QBT_TR(Alternative download rate limit must be greater than 0 or disabled.)QBT_TR[CONTEXT=HttpServer]");
                 return;
@@ -2719,7 +2719,7 @@ Use ';' to split multiple entries. Can use wildcard '*'.)QBT_TR[CONTEXT=OptionsD
             settings.set('checking_memory_use', $('outstandMemoryWhenCheckingTorrents').getProperty('value'));
             settings.set('disk_cache', $('diskCache').getProperty('value'));
             settings.set('disk_cache_ttl', $('diskCacheExpiryInterval').getProperty('value'));
-            settings.set('disk_queue_size', ($('diskQueueSize').getProperty('value') * 1024));
+            settings.set('disk_queue_size', ($('diskQueueSize').getProperty('value') * 1000));
             settings.set('disk_io_type', $('diskIOType').getProperty('value'));
             settings.set('disk_io_read_mode', $('diskIOReadMode').getProperty('value'));
             settings.set('disk_io_write_mode', $('diskIOWriteMode').getProperty('value'));

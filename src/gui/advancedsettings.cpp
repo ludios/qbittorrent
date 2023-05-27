@@ -222,7 +222,7 @@ void AdvancedSettings::saveAdvancedSettings() const
     session->setDiskCacheTTL(m_spinBoxCacheTTL.value());
 #endif
     // Disk queue size
-    session->setDiskQueueSize(m_spinBoxDiskQueueSize.value() * 1024);
+    session->setDiskQueueSize(m_spinBoxDiskQueueSize.value() * 1000);
 #ifdef QBT_USES_LIBTORRENT2
     session->setDiskIOType(m_comboBoxDiskIOType.currentData().value<BitTorrent::DiskIOType>());
 #endif
@@ -353,7 +353,7 @@ void AdvancedSettings::updateCacheSpinSuffix(const int value)
     else if (value < 0)
         m_spinBoxCache.setSuffix(tr(" (auto)"));
     else
-        m_spinBoxCache.setSuffix(tr(" MiB"));
+        m_spinBoxCache.setSuffix(tr(" MB"));
 }
 #endif
 
@@ -455,7 +455,7 @@ void AdvancedSettings::loadAdvancedSettings()
     // Physical memory (RAM) usage limit
     m_spinBoxMemoryWorkingSetLimit.setMinimum(1);
     m_spinBoxMemoryWorkingSetLimit.setMaximum(std::numeric_limits<int>::max());
-    m_spinBoxMemoryWorkingSetLimit.setSuffix(tr(" MiB"));
+    m_spinBoxMemoryWorkingSetLimit.setSuffix(tr(" MB"));
     m_spinBoxMemoryWorkingSetLimit.setToolTip(tr("This option is less effective on Linux"));
     m_spinBoxMemoryWorkingSetLimit.setValue(app()->memoryWorkingSetLimit());
     addRow(MEMORY_WORKING_SET_LIMIT, (tr("Physical memory (RAM) usage limit") + u' ' + makeLink(u"https://wikipedia.org/wiki/Working_set", u"(?)"))
@@ -517,7 +517,7 @@ void AdvancedSettings::loadAdvancedSettings()
     m_spinBoxCheckingMemUsage.setMaximum(128);
 #endif
     m_spinBoxCheckingMemUsage.setValue(session->checkingMemUsage());
-    m_spinBoxCheckingMemUsage.setSuffix(tr(" MiB"));
+    m_spinBoxCheckingMemUsage.setSuffix(tr(" MB"));
     addRow(CHECKING_MEM_USAGE, (tr("Outstanding memory when checking torrents") + u' ' + makeLink(u"https://www.libtorrent.org/reference-Settings.html#checking_mem_usage", u"(?)"))
             , &m_spinBoxCheckingMemUsage);
 #ifndef QBT_USES_LIBTORRENT2
@@ -527,7 +527,7 @@ void AdvancedSettings::loadAdvancedSettings()
 #ifdef QBT_APP_64BIT
     m_spinBoxCache.setMaximum(33554431);  // 32768GiB
 #else
-    // allocate 1536MiB and leave 512MiB to the rest of program data in RAM
+    // allocate 1536MB and leave 512MB to the rest of program data in RAM
     m_spinBoxCache.setMaximum(1536);
 #endif
     m_spinBoxCache.setValue(session->diskCacheSize());
@@ -546,9 +546,9 @@ void AdvancedSettings::loadAdvancedSettings()
 #endif
     // Disk queue size
     m_spinBoxDiskQueueSize.setMinimum(1);
-    m_spinBoxDiskQueueSize.setMaximum(std::numeric_limits<int>::max() / 1024);
-    m_spinBoxDiskQueueSize.setValue(session->diskQueueSize() / 1024);
-    m_spinBoxDiskQueueSize.setSuffix(tr(" KiB"));
+    m_spinBoxDiskQueueSize.setMaximum(std::numeric_limits<int>::max() / 1000);
+    m_spinBoxDiskQueueSize.setValue(session->diskQueueSize() / 1000);
+    m_spinBoxDiskQueueSize.setSuffix(tr(" KB"));
     addRow(DISK_QUEUE_SIZE, (tr("Disk queue size") + u' ' + makeLink(u"https://www.libtorrent.org/reference-Settings.html#max_queued_disk_bytes", u"(?)"))
             , &m_spinBoxDiskQueueSize);
 #ifdef QBT_USES_LIBTORRENT2
@@ -591,13 +591,13 @@ void AdvancedSettings::loadAdvancedSettings()
     // Send buffer watermark
     m_spinBoxSendBufferWatermark.setMinimum(1);
     m_spinBoxSendBufferWatermark.setMaximum(std::numeric_limits<int>::max());
-    m_spinBoxSendBufferWatermark.setSuffix(tr(" KiB"));
+    m_spinBoxSendBufferWatermark.setSuffix(tr(" KB"));
     m_spinBoxSendBufferWatermark.setValue(session->sendBufferWatermark());
     addRow(SEND_BUF_WATERMARK, (tr("Send buffer watermark") + u' ' + makeLink(u"https://www.libtorrent.org/reference-Settings.html#send_buffer_watermark", u"(?)"))
             , &m_spinBoxSendBufferWatermark);
     m_spinBoxSendBufferLowWatermark.setMinimum(1);
     m_spinBoxSendBufferLowWatermark.setMaximum(std::numeric_limits<int>::max());
-    m_spinBoxSendBufferLowWatermark.setSuffix(tr(" KiB"));
+    m_spinBoxSendBufferLowWatermark.setSuffix(tr(" KB"));
     m_spinBoxSendBufferLowWatermark.setValue(session->sendBufferLowWatermark());
     addRow(SEND_BUF_LOW_WATERMARK, (tr("Send buffer low watermark") + u' ' + makeLink(u"https://www.libtorrent.org/reference-Settings.html#send_buffer_low_watermark", u"(?)"))
             , &m_spinBoxSendBufferLowWatermark);

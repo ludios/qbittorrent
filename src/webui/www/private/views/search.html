@@ -125,24 +125,24 @@
                 <span style="margin-left: 15px;">QBT_TR(Size:)QBT_TR[CONTEXT=SearchEngineWidget]</span>
                 <input type="number" min="0" max="1000" step=".01" value="0.00" id="searchMinSizeFilter" onchange="qBittorrent.Search.searchSizeFilterChanged()">
                 <select id="searchMinSizePrefix" onchange="qBittorrent.Search.searchSizeFilterPrefixChanged()">
-                    <option value="0">QBT_TR(B)QBT_TR[CONTEXT=misc]</option>
-                    <option value="1">QBT_TR(KiB)QBT_TR[CONTEXT=misc]</option>
-                    <option value="2" selected>QBT_TR(MiB)QBT_TR[CONTEXT=misc]</option>
-                    <option value="3">QBT_TR(GiB)QBT_TR[CONTEXT=misc]</option>
-                    <option value="4">QBT_TR(TiB)QBT_TR[CONTEXT=misc]</option>
-                    <option value="5">QBT_TR(PiB)QBT_TR[CONTEXT=misc]</option>
-                    <option value="6">QBT_TR(EiB)QBT_TR[CONTEXT=misc]</option>
+                    <option value="0">B</option>
+                    <option value="1">KB</option>
+                    <option value="2" selected>MB</option>
+                    <option value="3">GB</option>
+                    <option value="4">TB</option>
+                    <option value="5">PB</option>
+                    <option value="6">EB</option>
                 </select>
                 <span>QBT_TR(to)QBT_TR[CONTEXT=SearchEngineWidget]</span>
                 <input type="number" min="0" max="1000" step=".01" value="0.00" id="searchMaxSizeFilter" onchange="qBittorrent.Search.searchSizeFilterChanged()">
                 <select id="searchMaxSizePrefix" onchange="qBittorrent.Search.searchSizeFilterPrefixChanged()">
-                    <option value="0">QBT_TR(B)QBT_TR[CONTEXT=misc]</option>
-                    <option value="1">QBT_TR(KiB)QBT_TR[CONTEXT=misc]</option>
-                    <option value="2" selected>QBT_TR(MiB)QBT_TR[CONTEXT=misc]</option>
-                    <option value="3">QBT_TR(GiB)QBT_TR[CONTEXT=misc]</option>
-                    <option value="4">QBT_TR(TiB)QBT_TR[CONTEXT=misc]</option>
-                    <option value="5">QBT_TR(PiB)QBT_TR[CONTEXT=misc]</option>
-                    <option value="6">QBT_TR(EiB)QBT_TR[CONTEXT=misc]</option>
+                    <option value="0">B</option>
+                    <option value="1">KB</option>
+                    <option value="2" selected>MB</option>
+                    <option value="3">GB</option>
+                    <option value="4">TB</option>
+                    <option value="5">PB</option>
+                    <option value="6">EB</option>
                 </select>
             </div>
         </div>
@@ -229,7 +229,7 @@
         };
         const searchSizeFilter = {
             min: 0.00,
-            minUnit: 2, // B = 0, KiB = 1, MiB = 2, GiB = 3, TiB = 4, PiB = 5, EiB = 6
+            minUnit: 2, // B = 0, KB = 1, MB = 2, GB = 3, TB = 4, PB = 5, EB = 6
             max: 0.00,
             maxUnit: 3
         };
@@ -599,9 +599,9 @@
             $('searchMinSeedsFilter').set('value', '0');
             $('searchMaxSeedsFilter').set('value', '0');
             $('searchMinSizeFilter').set('value', '0.00');
-            $('searchMinSizePrefix').set('value', '2'); // MiB
+            $('searchMinSizePrefix').set('value', '2'); // MB
             $('searchMaxSizeFilter').set('value', '0.00');
-            $('searchMaxSizePrefix').set('value', '3'); // GiB
+            $('searchMaxSizePrefix').set('value', '3'); // GB
         };
 
         const searchSeedsFilterChanged = function() {

@@ -129,7 +129,7 @@
                     </td>
                     <td>
                         <input type="hidden" id="dlLimitHidden" name="dlLimit" />
-                        <input type="text" id="dlLimitText" style="width: 16em;" placeholder="KiB/s" />
+                        <input type="text" id="dlLimitText" style="width: 16em;" placeholder="KB/s" />
                     </td>
                 </tr>
                 <tr>
@@ -138,7 +138,7 @@
                     </td>
                     <td>
                         <input type="hidden" id="upLimitHidden" name="upLimit" />
-                        <input type="text" id="upLimitText" style="width: 16em;" placeholder="KiB/s" />
+                        <input type="text" id="upLimitText" style="width: 16em;" placeholder="KB/s" />
                     </td>
                 </tr>
             </table>
@@ -155,8 +155,8 @@
         $('uploadForm').addEventListener("submit", function() {
             $('startTorrentHidden').value = $('startTorrent').checked ? 'false' : 'true';
 
-            $('dlLimitHidden').value = $('dlLimitText').value.toInt() * 1024;
-            $('upLimitHidden').value = $('upLimitText').value.toInt() * 1024;
+            $('dlLimitHidden').value = $('dlLimitText').value.toInt() * 1000;
+            $('upLimitHidden').value = $('upLimitText').value.toInt() * 1000;
 
             $('upload_spinner').style.display = "block";
             submitted = true;

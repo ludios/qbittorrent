@@ -419,7 +419,7 @@ SessionImpl::SessionImpl(QObject *parent)
     , m_checkingMemUsage(BITTORRENT_SESSION_KEY(u"CheckingMemUsageSize"_s), 32)
     , m_diskCacheSize(BITTORRENT_SESSION_KEY(u"DiskCacheSize"_s), -1)
     , m_diskCacheTTL(BITTORRENT_SESSION_KEY(u"DiskCacheTTL"_s), 60)
-    , m_diskQueueSize(BITTORRENT_SESSION_KEY(u"DiskQueueSize"_s), (1024 * 1024))
+    , m_diskQueueSize(BITTORRENT_SESSION_KEY(u"DiskQueueSize"_s), (1000 * 1000))
     , m_diskIOType(BITTORRENT_SESSION_KEY(u"DiskIOType"_s), DiskIOType::Default)
     , m_diskIOReadMode(BITTORRENT_SESSION_KEY(u"DiskIOReadMode"_s), DiskIOReadMode::EnableOSCache)
     , m_diskIOWriteMode(BITTORRENT_SESSION_KEY(u"DiskIOWriteMode"_s), DiskIOWriteMode::EnableOSCache)
@@ -1816,8 +1816,8 @@ lt::settings_pack SessionImpl::loadLTSettings() const
     settingsPack.set_int(lt::settings_pack::suggest_mode, isSuggestModeEnabled()
                          ? lt::settings_pack::suggest_read_cache : lt::settings_pack::no_piece_suggestions);
 
-    settingsPack.set_int(lt::settings_pack::send_buffer_watermark, sendBufferWatermark() * 1024);
-    settingsPack.set_int(lt::settings_pack::send_buffer_low_watermark, sendBufferLowWatermark() * 1024);
+    settingsPack.set_int(lt::settings_pack::send_buffer_watermark, sendBufferWatermark() * 1000);
+    settingsPack.set_int(lt::settings_pack::send_buffer_low_watermark, sendBufferLowWatermark() * 1000);
     settingsPack.set_int(lt::settings_pack::send_buffer_watermark_factor, sendBufferWatermarkFactor());
 
     settingsPack.set_bool(lt::settings_pack::anonymous_mode, isAnonymousModeEnabled());
@@ -1829,8 +1829,8 @@ lt::settings_pack SessionImpl::loadLTSettings() const
         settingsPack.set_int(lt::settings_pack::active_limit, maxActiveTorrents());
         settingsPack.set_int(lt::settings_pack::active_seeds, maxActiveUploads());
         settingsPack.set_bool(lt::settings_pack::dont_count_slow_torrents, ignoreSlowTorrentsForQueueing());
-        settingsPack.set_int(lt::settings_pack::inactive_down_rate, downloadRateForSlowTorrents() * 1024); // KiB to Bytes
-        settingsPack.set_int(lt::settings_pack::inactive_up_rate, uploadRateForSlowTorrents() * 1024); // KiB to Bytes
+        settingsPack.set_int(lt::settings_pack::inactive_down_rate, downloadRateForSlowTorrents() * 1000); // KB to Bytes
+        settingsPack.set_int(lt::settings_pack::inactive_up_rate, uploadRateForSlowTorrents() * 1000); // KB to Bytes
         settingsPack.set_int(lt::settings_pack::auto_manage_startup, slowTorrentsInactivityTimer());
     }
     else
@@ -3429,24 +3429,24 @@ void SessionImpl::configureListeningInterface()
 
 int SessionImpl::globalDownloadSpeedLimit() const
 {
-    // Unfortunately the value was saved as KiB instead of B.
+    // Unfortunately the value was saved as KB instead of B.
     // But it is better to pass it around internally(+ webui) as Bytes.
-    return m_globalDownloadSpeedLimit * 1024;
+    return m_globalDownloadSpeedLimit * 1000;
 }
 
 void SessionImpl::setGlobalDownloadSpeedLimit(const int limit)
 {
-    // Unfortunately the value was saved as KiB instead of B.
+    // Unfortunately the value was saved as KB instead of B.
     // But it is better to pass it around internally(+ webui) as Bytes.
     if (limit == globalDownloadSpeedLimit())
         return;
 
     if (limit <= 0)
         m_globalDownloadSpeedLimit = 0;
-    else if (limit <= 1024)
+    else if (limit <= 1000)
         m_globalDownloadSpeedLimit = 1;
     else
-        m_globalDownloadSpeedLimit = (limit / 1024);
+        m_globalDownloadSpeedLimit = (limit / 1000);
 
     if (!isAltGlobalSpeedLimitEnabled())
         configureDeferred();
@@ -3454,24 +3454,24 @@ void SessionImpl::setGlobalDownloadSpeedLimit(const int limit)
 
 int SessionImpl::globalUploadSpeedLimit() const
 {
-    // Unfortunately the value was saved as KiB instead of B.
+    // Unfortunately the value was saved as KB instead of B.
     // But it is better to pass it around internally(+ webui) as Bytes.
-    return m_globalUploadSpeedLimit * 1024;
+    return m_globalUploadSpeedLimit * 1000;
 }
 
 void SessionImpl::setGlobalUploadSpeedLimit(const int limit)
 {
-    // Unfortunately the value was saved as KiB instead of B.
+    // Unfortunately the value was saved as KB instead of B.
     // But it is better to pass it around internally(+ webui) as Bytes.
     if (limit == globalUploadSpeedLimit())
         return;
 
     if (limit <= 0)
         m_globalUploadSpeedLimit = 0;
-    else if (limit <= 1024)
+    else if (limit <= 1000)
         m_globalUploadSpeedLimit = 1;
     else
-        m_globalUploadSpeedLimit = (limit / 1024);
+        m_globalUploadSpeedLimit = (limit / 1000);
 
     if (!isAltGlobalSpeedLimitEnabled())
         configureDeferred();
@@ -3479,24 +3479,24 @@ void SessionImpl::setGlobalUploadSpeedLimit(const int limit)
 
 int SessionImpl::altGlobalDownloadSpeedLimit() const
 {
-    // Unfortunately the value was saved as KiB instead of B.
+    // Unfortunately the value was saved as KB instead of B.
     // But it is better to pass it around internally(+ webui) as Bytes.
-    return m_altGlobalDownloadSpeedLimit * 1024;
+    return m_altGlobalDownloadSpeedLimit * 1000;
 }
 
 void SessionImpl::setAltGlobalDownloadSpeedLimit(const int limit)
 {
-    // Unfortunately the value was saved as KiB instead of B.
+    // Unfortunately the value was saved as KB instead of B.
     // But it is better to pass it around internally(+ webui) as Bytes.
     if (limit == altGlobalDownloadSpeedLimit())
         return;
 
     if (limit <= 0)
         m_altGlobalDownloadSpeedLimit = 0;
-    else if (limit <= 1024)
+    else if (limit <= 1000)
         m_altGlobalDownloadSpeedLimit = 1;
     else
-        m_altGlobalDownloadSpeedLimit = (limit / 1024);
+        m_altGlobalDownloadSpeedLimit = (limit / 1000);
 
     if (isAltGlobalSpeedLimitEnabled())
         configureDeferred();
@@ -3504,24 +3504,24 @@ void SessionImpl::setAltGlobalDownloadSpeedLimit(const int limit)
 
 int SessionImpl::altGlobalUploadSpeedLimit() const
 {
-    // Unfortunately the value was saved as KiB instead of B.
+    // Unfortunately the value was saved as KB instead of B.
     // But it is better to pass it around internally(+ webui) as Bytes.
-    return m_altGlobalUploadSpeedLimit * 1024;
+    return m_altGlobalUploadSpeedLimit * 1000;
 }
 
 void SessionImpl::setAltGlobalUploadSpeedLimit(const int limit)
 {
-    // Unfortunately the value was saved as KiB instead of B.
+    // Unfortunately the value was saved as KB instead of B.
     // But it is better to pass it around internally(+ webui) as Bytes.
     if (limit == altGlobalUploadSpeedLimit())
         return;
 
     if (limit <= 0)
         m_altGlobalUploadSpeedLimit = 0;
-    else if (limit <= 1024)
+    else if (limit <= 1000)
         m_altGlobalUploadSpeedLimit = 1;
     else
-        m_altGlobalUploadSpeedLimit = (limit / 1024);
+        m_altGlobalUploadSpeedLimit = (limit / 1000);
 
     if (isAltGlobalSpeedLimitEnabled())
         configureDeferred();
@@ -4557,12 +4557,12 @@ int SessionImpl::downloadRateForSlowTorrents() const
     return m_downloadRateForSlowTorrents;
 }
 
-void SessionImpl::setDownloadRateForSlowTorrents(const int rateInKibiBytes)
+void SessionImpl::setDownloadRateForSlowTorrents(const int rateInKiloBytes)
 {
-    if (rateInKibiBytes == m_downloadRateForSlowTorrents)
+    if (rateInKiloBytes == m_downloadRateForSlowTorrents)
         return;
 
-    m_downloadRateForSlowTorrents = rateInKibiBytes;
+    m_downloadRateForSlowTorrents = rateInKiloBytes;
     configureDeferred();
 }
 
@@ -4571,12 +4571,12 @@ int SessionImpl::uploadRateForSlowTorrents() const
     return m_uploadRateForSlowTorrents;
 }
 
-void SessionImpl::setUploadRateForSlowTorrents(const int rateInKibiBytes)
+void SessionImpl::setUploadRateForSlowTorrents(const int rateInKiloBytes)
 {
-    if (rateInKibiBytes == m_uploadRateForSlowTorrents)
+    if (rateInKiloBytes == m_uploadRateForSlowTorrents)
         return;
 
-    m_uploadRateForSlowTorrents = rateInKibiBytes;
+    m_uploadRateForSlowTorrents = rateInKiloBytes;
     configureDeferred();
 }
 

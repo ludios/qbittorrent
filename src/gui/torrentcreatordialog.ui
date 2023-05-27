@@ -338,7 +338,7 @@
                   <string>Disabled</string>
                  </property>
                  <property name="suffix">
-                  <string> KiB</string>
+                  <string> KB</string>
                  </property>
                  <property name="minimum">
                   <number>-1</number>

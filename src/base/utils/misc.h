@@ -44,20 +44,15 @@ enum class ShutdownDialogAction;
 
 namespace Utils::Misc
 {
-    // use binary prefix standards from IEC 60027-2
-    // see http://en.wikipedia.org/wiki/Kilobyte
     enum class SizeUnit
     {
-        Byte,       // 1024^0,
-        KibiByte,   // 1024^1,
-        MebiByte,   // 1024^2,
-        GibiByte,   // 1024^3,
-        TebiByte,   // 1024^4,
-        PebiByte,   // 1024^5,
-        ExbiByte    // 1024^6,
-        // int64 is used for sizes and thus the next units can not be handled
-        // ZebiByte,   // 1024^7,
-        // YobiByte,   // 1024^8
+        Byte,
+        KiloByte,
+        MegaByte,
+        GigaByte,
+        TeraByte,
+        PetaByte,
+        ExaByte
     };
 
     QString parseHtmlLinks(const QString &rawText);
@@ -72,7 +67,7 @@ namespace Utils::Misc
 
     QString unitString(SizeUnit unit, bool isSpeed = false);
 
-    // return the best user friendly storage unit (B, KiB, MiB, GiB, TiB)
+    // return the best user friendly storage unit (B, KB, MB, GB, TB)
     // value must be given in bytes
     QString friendlyUnit(qint64 bytes, bool isSpeed = false);
     int friendlyUnitPrecision(SizeUnit unit);

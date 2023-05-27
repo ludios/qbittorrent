@@ -332,12 +332,12 @@ void SearchJobWidget::fillFilterComboBoxes()
 
     QStringList unitStrings;
     unitStrings.append(unitString(SizeUnit::Byte));
-    unitStrings.append(unitString(SizeUnit::KibiByte));
-    unitStrings.append(unitString(SizeUnit::MebiByte));
-    unitStrings.append(unitString(SizeUnit::GibiByte));
-    unitStrings.append(unitString(SizeUnit::TebiByte));
-    unitStrings.append(unitString(SizeUnit::PebiByte));
-    unitStrings.append(unitString(SizeUnit::ExbiByte));
+    unitStrings.append(unitString(SizeUnit::KiloByte));
+    unitStrings.append(unitString(SizeUnit::MegaByte));
+    unitStrings.append(unitString(SizeUnit::GigaByte));
+    unitStrings.append(unitString(SizeUnit::TeraByte));
+    unitStrings.append(unitString(SizeUnit::PetaByte));
+    unitStrings.append(unitString(SizeUnit::ExaByte));
 
     m_ui->minSizeUnit->clear();
     m_ui->maxSizeUnit->clear();
@@ -345,10 +345,10 @@ void SearchJobWidget::fillFilterComboBoxes()
     m_ui->maxSizeUnit->addItems(unitStrings);
 
     m_ui->minSize->setValue(0);
-    m_ui->minSizeUnit->setCurrentIndex(static_cast<int>(SizeUnit::MebiByte));
+    m_ui->minSizeUnit->setCurrentIndex(static_cast<int>(SizeUnit::MegaByte));
 
     m_ui->maxSize->setValue(-1);
-    m_ui->maxSizeUnit->setCurrentIndex(static_cast<int>(SizeUnit::GibiByte));
+    m_ui->maxSizeUnit->setCurrentIndex(static_cast<int>(SizeUnit::GigaByte));
 
     m_ui->filterMode->clear();
 
