@@ -664,7 +664,7 @@ void TorrentsController::addAction()
     const QString cookie = params()[u"cookie"_s];
 
     const bool skipChecking = parseBool(params()[u"skip_checking"_s]).value_or(false);
-    const bool seqDownload = parseBool(params()[u"sequentialDownload"_s]).value_or(false);
+    const bool seqDownload = parseBool(params()[u"sequentialDownload"_s]).value_or(true);
     const bool firstLastPiece = parseBool(params()[u"firstLastPiecePrio"_s]).value_or(false);
     const std::optional<bool> addToQueueTop = parseBool(params()[u"addToTopOfQueue"_s]);
     const std::optional<bool> addPaused = parseBool(params()[u"paused"_s]);
