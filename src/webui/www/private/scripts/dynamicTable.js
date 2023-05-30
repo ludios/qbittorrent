@@ -1314,6 +1314,7 @@ window.qBittorrent.DynamicTable = (function() {
         applyFilter: function(row, filterName, categoryHash, tagHash, trackerHash, filterTerms) {
             const state = row['full_data'].state;
             const name = row['full_data'].name.toLowerCase();
+            const save_path = row['full_data'].save_path.toLowerCase();
             let inactive = false;
             let r;
 
@@ -1435,7 +1436,7 @@ window.qBittorrent.DynamicTable = (function() {
             }
 
             if ((filterTerms !== undefined) && (filterTerms !== null)
-                && (filterTerms.length > 0) && !window.qBittorrent.Misc.containsAllTerms(name, filterTerms))
+                && (filterTerms.length > 0) && !(window.qBittorrent.Misc.containsAllTerms(name, filterTerms) || window.qBittorrent.Misc.containsAllTerms(save_path, filterTerms)))
                 return false;
 
             return true;
