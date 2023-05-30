@@ -470,11 +470,6 @@ MainWindow::MainWindow(IGUIApplication *app, WindowState initialState)
         m_transferListWidget->applyTrackerFilterAll();
     }
 
-    // Start watching the executable for updates
-    m_executableWatcher = new QFileSystemWatcher(this);
-    connect(m_executableWatcher, &QFileSystemWatcher::fileChanged, this, &MainWindow::notifyOfUpdate);
-    m_executableWatcher->addPath(qApp->applicationFilePath());
-
     m_transferListWidget->setFocus();
 
     // Update the number of torrents (tab)
@@ -791,8 +786,6 @@ void MainWindow::cleanup()
     // handleRSSUnreadCountUpdated() at application shutdown
     delete m_rssWidget;
 
-    delete m_executableWatcher;
-
     m_preventTimer->stop();
 
 #if (defined(Q_OS_WIN) || defined(Q_OS_MACOS))
@@ -1026,9 +1019,6 @@ void MainWindow::notifyOfUpdate(const QString &)
     m_statusBar->showRestartRequired();
     LogMsg(tr("qBittorrent was just updated and needs to be restarted for the changes to be effective.")
                                    , Log::CRITICAL);
-    // Delete the executable watcher
-    delete m_executableWatcher;
-    m_executableWatcher = nullptr;
 }
 
 #ifndef Q_OS_MACOS

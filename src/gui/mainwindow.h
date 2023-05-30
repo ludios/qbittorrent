@@ -200,7 +200,6 @@ private:
 
     Ui::MainWindow *m_ui = nullptr;
 
-    QFileSystemWatcher *m_executableWatcher = nullptr;
     // GUI related
     bool m_posInitialized = false;
     bool m_neverShown = true;
