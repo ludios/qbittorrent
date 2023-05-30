@@ -1363,10 +1363,14 @@ window.addEvent('load', function() {
     let torrentsFilterInputTimer = -1;
     $('torrentsFilterInput').addEvent('input', () => {
         clearTimeout(torrentsFilterInputTimer);
+        // A filter with just 1 character will typically find too many torrents
+        // and you'll have to wait for that to load, so wait a bit longer first
+        // for additional characters.
+        const timeout = value.length >= 2 ? window.qBittorrent.Misc.FILTER_INPUT_DELAY : 1500;
         torrentsFilterInputTimer = setTimeout(() => {
             torrentsFilterInputTimer = -1;
             torrentsTable.updateTable();
-        }, window.qBittorrent.Misc.FILTER_INPUT_DELAY);
+        }, timeout);
     });
 
     $('transfersTabLink').addEvent('click', showTransfersTab);
