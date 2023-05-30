@@ -70,7 +70,7 @@ window.qBittorrent.Download = (function() {
                 if (!pref)
                     return;
 
-                defaultSavePath = pref.save_path;
+                defaultSavePath = pref.save_path + "/";
                 $('savepath').setProperty('value', defaultSavePath);
                 $('startTorrent').checked = !pref.start_paused_enabled;
                 $('addToTopOfQueue').checked = pref.add_to_top_of_queue;
