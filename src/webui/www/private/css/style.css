@@ -916,3 +916,11 @@ td.statusBarSeparator {
 .confirmWarning {
     background-image: url("../images/help-about.svg");
 }
+
+/**
+ * Workaround for https://bugs.chromium.org/p/chromium/issues/detail?id=1343169
+ * 'Bad colors for inputs, buttons, textareas and selects when using a high-contrast Windows theme'
+ */
+input, select, button, datalist, option, textarea {
+    color: var(--color-text-default);
+}
