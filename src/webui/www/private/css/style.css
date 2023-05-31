@@ -647,3 +647,11 @@ td.statusBarSeparator {
     background-color: #ee6600;
     color: #fff;
 }
+
+/**
+ * Workaround for https://bugs.chromium.org/p/chromium/issues/detail?id=1343169
+ * 'Bad colors for inputs, buttons, textareas and selects when using a high-contrast Windows theme'
+ */
+input, select, button, datalist, option, textarea {
+    color: #000;
+}
