@@ -9,11 +9,6 @@
     background-color: #fff;
 }
 
-.dynamicTable tbody tr:nth-child(even),
-.dynamicTable tbody tr.alt {
-    background-color: #eee;
-}
-
 #transferList .dynamicTable td {
     padding: 0 2px;
 }
