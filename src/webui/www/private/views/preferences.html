@@ -106,7 +106,7 @@
                 <tr>
                     <td><input type="checkbox" id="filelog_backup_checkbox" onclick="qBittorrent.Preferences.updateFileLogBackupEnabled();"></td>
                     <td><label id="filelogMaxSizeLabel" for="filelog_backup_checkbox">QBT_TR(Backup the log file after:)QBT_TR[CONTEXT=OptionsDialog]</label></td>
-                    <td><input id="filelog_max_size_input" type="number" min="1" max="1024000" value="65" onchange="qBittorrent.Preferences.numberInputLimiter(this);" aria-labelledby="filelogMaxSizeLabel">QBT_TR(KiB)QBT_TR[CONTEXT=OptionsDialog]</td>
+                    <td><input id="filelog_max_size_input" type="number" min="1" max="1000000" value="65" onchange="qBittorrent.Preferences.numberInputLimiter(this);" aria-labelledby="filelogMaxSizeLabel">KB</td>
                 </tr>
                 <tr>
                     <td><input type="checkbox" id="filelog_delete_old_checkbox" onclick="qBittorrent.Preferences.updateFileLogDeleteEnabled();"></td>
@@ -628,11 +628,11 @@
                         <img src="images/slow_off.svg" style="height: 2.5em;" alt="QBT_TR(Alternative speed limits)QBT_TR[CONTEXT=MainWindow]">
                     </td>
                     <td><label for="upLimitValue">QBT_TR(Upload:)QBT_TR[CONTEXT=OptionsDialog]</label></td>
-                    <td><input type="number" id="upLimitValue" style="width: 6em;" min="0">&nbsp;&nbsp;QBT_TR(KiB/s)QBT_TR[CONTEXT=OptionsDialog]</td>
+                    <td><input type="number" id="upLimitValue" style="width: 6em;" min="0">&nbsp;&nbsp;KB/s</td>
                 </tr>
                 <tr>
                     <td><label for="dlLimitValue">QBT_TR(Download:)QBT_TR[CONTEXT=OptionsDialog]</label></td>
-                    <td><input type="number" id="dlLimitValue" style="width: 6em;" min="0">&nbsp;&nbsp;QBT_TR(KiB/s)QBT_TR[CONTEXT=OptionsDialog]</td>
+                    <td><input type="number" id="dlLimitValue" style="width: 6em;" min="0">&nbsp;&nbsp;KB/s</td>
                 </tr>
             </tbody>
         </table>
@@ -648,11 +648,11 @@
                         <img src="images/slow.svg" style="height: 2.5em;" alt="QBT_TR(Alternative speed limits)QBT_TR[CONTEXT=MainWindow]">
                     </td>
                     <td><label for="altUpLimitValue">QBT_TR(Upload:)QBT_TR[CONTEXT=OptionsDialog]</label></td>
-                    <td><input type="number" id="altUpLimitValue" style="width: 6em;" min="0">&nbsp;&nbsp;QBT_TR(KiB/s)QBT_TR[CONTEXT=OptionsDialog]</td>
+                    <td><input type="number" id="altUpLimitValue" style="width: 6em;" min="0">&nbsp;&nbsp;KB/s</td>
                 </tr>
                 <tr>
                     <td><label for="altDlLimitValue">QBT_TR(Download:)QBT_TR[CONTEXT=OptionsDialog]</label></td>
-                    <td><input type="number" id="altDlLimitValue" style="width: 6em;" min="0">&nbsp;&nbsp;QBT_TR(KiB/s)QBT_TR[CONTEXT=OptionsDialog]</td>
+                    <td><input type="number" id="altDlLimitValue" style="width: 6em;" min="0">&nbsp;&nbsp;KB/s</td>
                 </tr>
             </tbody>
         </table>
@@ -783,7 +783,7 @@
                             <label for="dlRateThresholdValue">QBT_TR(Download rate threshold:)QBT_TR[CONTEXT=OptionsDialog]</label>
                         </td>
                         <td>
-                            <input type="text" id="dlRateThresholdValue" style="width: 6em;">&nbsp;&nbsp;QBT_TR(KiB/s)QBT_TR[CONTEXT=OptionsDialog]
+                            <input type="text" id="dlRateThresholdValue" style="width: 6em;">&nbsp;&nbsp;KB/s
                         </td>
                     </tr>
                     <tr>
@@ -791,7 +791,7 @@
                             <label for="ulRateThresholdValue">QBT_TR(Upload rate threshold:)QBT_TR[CONTEXT=OptionsDialog]</label>
                         </td>
                         <td>
-                            <input type="text" id="ulRateThresholdValue" style="width: 6em;">&nbsp;&nbsp;QBT_TR(KiB/s)QBT_TR[CONTEXT=OptionsDialog]
+                            <input type="text" id="ulRateThresholdValue" style="width: 6em;">&nbsp;&nbsp;KB/s
                         </td>
                     </tr>
                     <tr>
@@ -1224,7 +1224,7 @@ Use ';' to split multiple entries. Can use wildcard '*'.)QBT_TR[CONTEXT=OptionsD
                         <label for="memoryWorkingSetLimit">QBT_TR(Physical memory (RAM) usage limit:)QBT_TR[CONTEXT=OptionsDialog]&nbsp;<a href="https://wikipedia.org/wiki/Working_set" target="_blank">(?)</a></label>
                     </td>
                     <td>
-                        <input type="text" id="memoryWorkingSetLimit" style="width: 15em;">&nbsp;&nbsp;QBT_TR(MiB)QBT_TR[CONTEXT=OptionsDialog]
+                        <input type="text" id="memoryWorkingSetLimit" style="width: 15em;">&nbsp;&nbsp;MB
                     </td>
                 </tr>
                 <tr>
@@ -1266,7 +1266,7 @@ Use ';' to split multiple entries. Can use wildcard '*'.)QBT_TR[CONTEXT=OptionsD
                         <label for="torrentFileSizeLimit">QBT_TR(.torrent file size limit:)QBT_TR[CONTEXT=OptionsDialog]</label>
                     </td>
                     <td>
-                        <input type="text" id="torrentFileSizeLimit" style="width: 15em;">&nbsp;&nbsp;QBT_TR(MiB)QBT_TR[CONTEXT=OptionsDialog]
+                        <input type="text" id="torrentFileSizeLimit" style="width: 15em;">&nbsp;&nbsp;MB
                     </td>
                 </tr>
                 <tr>
@@ -1425,7 +1425,7 @@ Use ';' to split multiple entries. Can use wildcard '*'.)QBT_TR[CONTEXT=OptionsD
                         <label for="outstandMemoryWhenCheckingTorrents">QBT_TR(Outstanding memory when checking torrents:)QBT_TR[CONTEXT=OptionsDialog]&nbsp;<a href="https://www.libtorrent.org/reference-Settings.html#checking_mem_usage" target="_blank">(?)</a></label>
                     </td>
                     <td>
-                        <input type="text" id="outstandMemoryWhenCheckingTorrents" style="width: 15em;">&nbsp;&nbsp;QBT_TR(MiB)QBT_TR[CONTEXT=OptionsDialog]
+                        <input type="text" id="outstandMemoryWhenCheckingTorrents" style="width: 15em;">&nbsp;&nbsp;MB
                     </td>
                 </tr>
                 <tr id="rowDiskCache">
@@ -1433,7 +1433,7 @@ Use ';' to split multiple entries. Can use wildcard '*'.)QBT_TR[CONTEXT=OptionsD
                         <label for="diskCache">QBT_TR(Disk cache:)QBT_TR[CONTEXT=OptionsDialog]&nbsp;<a href="https://www.libtorrent.org/reference-Settings.html#cache_size" target="_blank">(?)</a></label>
                     </td>
                     <td>
-                        <input type="text" id="diskCache" style="width: 15em;">&nbsp;&nbsp;QBT_TR(MiB)QBT_TR[CONTEXT=OptionsDialog]
+                        <input type="text" id="diskCache" style="width: 15em;">&nbsp;&nbsp;MB
                     </td>
                 </tr>
                 <tr id="rowDiskCacheExpiryInterval">
@@ -1449,7 +1449,7 @@ Use ';' to split multiple entries. Can use wildcard '*'.)QBT_TR[CONTEXT=OptionsD
                         <label for="diskQueueSize">QBT_TR(Disk queue size:)QBT_TR[CONTEXT=OptionsDialog]&nbsp;<a href="https://www.libtorrent.org/reference-Settings.html#max_queued_disk_bytes" target="_blank">(?)</a></label>
                     </td>
                     <td>
-                        <input type="text" id="diskQueueSize" style="width: 15em;">&nbsp;&nbsp;QBT_TR(KiB)QBT_TR[CONTEXT=OptionsDialog]
+                        <input type="text" id="diskQueueSize" style="width: 15em;">&nbsp;&nbsp;KB
                     </td>
                 </tr>
                 <tr id="rowDiskIOType">
@@ -1517,7 +1517,7 @@ Use ';' to split multiple entries. Can use wildcard '*'.)QBT_TR[CONTEXT=OptionsD
                         <label for="sendBufferWatermark">QBT_TR(Send buffer watermark:)QBT_TR[CONTEXT=OptionsDialog]&nbsp;<a href="https://www.libtorrent.org/reference-Settings.html#send_buffer_watermark" target="_blank">(?)</a></label>
                     </td>
                     <td>
-                        <input type="text" id="sendBufferWatermark" style="width: 15em;">&nbsp;&nbsp;QBT_TR(KiB)QBT_TR[CONTEXT=OptionsDialog]
+                        <input type="text" id="sendBufferWatermark" style="width: 15em;">&nbsp;&nbsp;KB
                     </td>
                 </tr>
                 <tr>
@@ -1525,7 +1525,7 @@ Use ';' to split multiple entries. Can use wildcard '*'.)QBT_TR[CONTEXT=OptionsD
                         <label for="sendBufferLowWatermark">QBT_TR(Send buffer low watermark:)QBT_TR[CONTEXT=OptionsDialog]&nbsp;<a href="https://www.libtorrent.org/reference-Settings.html#send_buffer_low_watermark" target="_blank">(?)</a></label>
                     </td>
                     <td>
-                        <input type="text" id="sendBufferLowWatermark" style="width: 15em;">&nbsp;&nbsp;QBT_TR(KiB)QBT_TR[CONTEXT=OptionsDialog]
+                        <input type="text" id="sendBufferLowWatermark" style="width: 15em;">&nbsp;&nbsp;KB
                     </td>
                 </tr>
                 <tr>
@@ -1549,7 +1549,7 @@ Use ';' to split multiple entries. Can use wildcard '*'.)QBT_TR[CONTEXT=OptionsD
                         <label for="socketSendBufferSize">QBT_TR(Socket send buffer size [0: system default]:)QBT_TR[CONTEXT=OptionsDialog]&nbsp;<a href="https://www.libtorrent.org/reference-Settings.html#send_socket_buffer_size" target="_blank">(?)</a></label>
                     </td>
                     <td>
-                        <input type="text" id="socketSendBufferSize" style="width: 15em;">&nbsp;&nbsp;QBT_TR(KiB)QBT_TR[CONTEXT=OptionsDialog]
+                        <input type="text" id="socketSendBufferSize" style="width: 15em;">&nbsp;&nbsp;KB
                     </td>
                 </tr>
                 <tr>
@@ -1557,7 +1557,7 @@ Use ';' to split multiple entries. Can use wildcard '*'.)QBT_TR[CONTEXT=OptionsD
                         <label for="socketReceiveBufferSize">QBT_TR(Socket receive buffer size [0: system default]:)QBT_TR[CONTEXT=OptionsDialog]&nbsp;<a href="https://www.libtorrent.org/reference-Settings.html#recv_socket_buffer_size" target="_blank">(?)</a></label>
                     </td>
                     <td>
-                        <input type="text" id="socketReceiveBufferSize" style="width: 15em;">&nbsp;&nbsp;QBT_TR(KiB)QBT_TR[CONTEXT=OptionsDialog]
+                        <input type="text" id="socketReceiveBufferSize" style="width: 15em;">&nbsp;&nbsp;KB
                     </td>
                 </tr>
                 <tr>
@@ -2527,11 +2527,11 @@ Use ';' to split multiple entries. Can use wildcard '*'.)QBT_TR[CONTEXT=OptionsD
 
                     // Speed tab
                     // Global Rate Limits
-                    document.getElementById("upLimitValue").value = (Number(pref.up_limit) / 1024);
-                    document.getElementById("dlLimitValue").value = (Number(pref.dl_limit) / 1024);
+                    document.getElementById("upLimitValue").value = (Number(pref.up_limit) / 1000);
+                    document.getElementById("dlLimitValue").value = (Number(pref.dl_limit) / 1000);
                     // Alternative Global Rate Limits
-                    document.getElementById("altUpLimitValue").value = (Number(pref.alt_up_limit) / 1024);
-                    document.getElementById("altDlLimitValue").value = (Number(pref.alt_dl_limit) / 1024);
+                    document.getElementById("altUpLimitValue").value = (Number(pref.alt_up_limit) / 1000);
+                    document.getElementById("altDlLimitValue").value = (Number(pref.alt_dl_limit) / 1000);
 
                     document.getElementById("enable_protocol_combobox").value = pref.bittorrent_protocol;
                     document.getElementById("limit_utp_rate_checkbox").checked = pref.limit_utp_rate;
@@ -2682,7 +2682,7 @@ Use ';' to split multiple entries. Can use wildcard '*'.)QBT_TR[CONTEXT=OptionsD
                     updateInterfaceAddresses(pref.current_network_interface, pref.current_interface_address);
                     document.getElementById("saveResumeDataInterval").value = pref.save_resume_data_interval;
                     document.getElementById("saveStatisticsInterval").value = pref.save_statistics_interval;
-                    document.getElementById("torrentFileSizeLimit").value = (pref.torrent_file_size_limit / 1024 / 1024);
+                    document.getElementById("torrentFileSizeLimit").value = (pref.torrent_file_size_limit / 1000 / 1000);
                     document.getElementById("confirmTorrentRecheck").checked = pref.confirm_torrent_recheck;
                     document.getElementById("recheckTorrentsOnCompletion").checked = pref.recheck_completed_torrents;
                     document.getElementById("appInstanceName").value = pref.app_instance_name;
@@ -2705,7 +2705,7 @@ Use ';' to split multiple entries. Can use wildcard '*'.)QBT_TR[CONTEXT=OptionsD
                     document.getElementById("outstandMemoryWhenCheckingTorrents").value = pref.checking_memory_use;
                     document.getElementById("diskCache").value = pref.disk_cache;
                     document.getElementById("diskCacheExpiryInterval").value = pref.disk_cache_ttl;
-                    document.getElementById("diskQueueSize").value = (pref.disk_queue_size / 1024);
+                    document.getElementById("diskQueueSize").value = (pref.disk_queue_size / 1000);
                     document.getElementById("diskIOType").value = pref.disk_io_type;
                     document.getElementById("diskIOReadMode").value = pref.disk_io_read_mode;
                     document.getElementById("diskIOWriteMode").value = pref.disk_io_write_mode;
@@ -2716,8 +2716,8 @@ Use ';' to split multiple entries. Can use wildcard '*'.)QBT_TR[CONTEXT=OptionsD
                     document.getElementById("sendBufferLowWatermark").value = pref.send_buffer_low_watermark;
                     document.getElementById("sendBufferWatermarkFactor").value = pref.send_buffer_watermark_factor;
                     document.getElementById("connectionSpeed").value = pref.connection_speed;
-                    document.getElementById("socketSendBufferSize").value = (pref.socket_send_buffer_size / 1024);
-                    document.getElementById("socketReceiveBufferSize").value = (pref.socket_receive_buffer_size / 1024);
+                    document.getElementById("socketSendBufferSize").value = (pref.socket_send_buffer_size / 1000);
+                    document.getElementById("socketReceiveBufferSize").value = (pref.socket_receive_buffer_size / 1000);
                     document.getElementById("socketBacklogSize").value = pref.socket_backlog_size;
                     document.getElementById("outgoingPortsMin").value = pref.outgoing_ports_min;
                     document.getElementById("outgoingPortsMax").value = pref.outgoing_ports_max;
@@ -2922,14 +2922,14 @@ Use ';' to split multiple entries. Can use wildcard '*'.)QBT_TR[CONTEXT=OptionsD
 
             // Speed tab
             // Global Rate Limits
-            const upLimit = Number(document.getElementById("upLimitValue").value) * 1024;
+            const upLimit = Number(document.getElementById("upLimitValue").value) * 1000;
             if (Number.isNaN(upLimit) || (upLimit < 0)) {
                 alert("QBT_TR(Global upload rate limit must be greater than 0 or disabled.)QBT_TR[CONTEXT=HttpServer]");
                 return;
             }
             settings["up_limit"] = upLimit;
 
-            const dlLimit = Number(document.getElementById("dlLimitValue").value) * 1024;
+            const dlLimit = Number(document.getElementById("dlLimitValue").value) * 1000;
             if (Number.isNaN(dlLimit) || (dlLimit < 0)) {
                 alert("QBT_TR(Global download rate limit must be greater than 0 or disabled.)QBT_TR[CONTEXT=HttpServer]");
                 return;
@@ -2937,14 +2937,14 @@ Use ';' to split multiple entries. Can use wildcard '*'.)QBT_TR[CONTEXT=OptionsD
             settings["dl_limit"] = dlLimit;
 
             // Alternative Global Rate Limits
-            const altUpLimit = Number(document.getElementById("altUpLimitValue").value) * 1024;
+            const altUpLimit = Number(document.getElementById("altUpLimitValue").value) * 1000;
             if (Number.isNaN(altUpLimit) || (altUpLimit < 0)) {
                 alert("QBT_TR(Alternative upload rate limit must be greater than 0 or disabled.)QBT_TR[CONTEXT=HttpServer]");
                 return;
             }
             settings["alt_up_limit"] = altUpLimit;
 
-            const altDlLimit = Number(document.getElementById("altDlLimitValue").value) * 1024;
+            const altDlLimit = Number(document.getElementById("altDlLimitValue").value) * 1000;
             if (Number.isNaN(altDlLimit) || (altDlLimit < 0)) {
                 alert("QBT_TR(Alternative download rate limit must be greater than 0 or disabled.)QBT_TR[CONTEXT=HttpServer]");
                 return;
@@ -3170,7 +3170,7 @@ Use ';' to split multiple entries. Can use wildcard '*'.)QBT_TR[CONTEXT=OptionsD
             settings["current_interface_address"] = document.getElementById("optionalIPAddressToBind").value;
             settings["save_resume_data_interval"] = Number(document.getElementById("saveResumeDataInterval").value);
             settings["save_statistics_interval"] = Number(document.getElementById("saveStatisticsInterval").value);
-            settings["torrent_file_size_limit"] = (document.getElementById("torrentFileSizeLimit").value * 1024 * 1024);
+            settings["torrent_file_size_limit"] = (document.getElementById("torrentFileSizeLimit").value * 1000 * 1000);
             settings["confirm_torrent_recheck"] = document.getElementById("confirmTorrentRecheck").checked;
             settings["recheck_completed_torrents"] = document.getElementById("recheckTorrentsOnCompletion").checked;
             settings["app_instance_name"] = document.getElementById("appInstanceName").value;
@@ -3201,7 +3201,7 @@ Use ';' to split multiple entries. Can use wildcard '*'.)QBT_TR[CONTEXT=OptionsD
 
             settings["disk_cache"] = Number(document.getElementById("diskCache").value);
             settings["disk_cache_ttl"] = Number(document.getElementById("diskCacheExpiryInterval").value);
-            settings["disk_queue_size"] = (Number(document.getElementById("diskQueueSize").value) * 1024);
+            settings["disk_queue_size"] = (Number(document.getElementById("diskQueueSize").value) * 1000);
             settings["disk_io_type"] = Number(document.getElementById("diskIOType").value);
             settings["disk_io_read_mode"] = Number(document.getElementById("diskIOReadMode").value);
             settings["disk_io_write_mode"] = Number(document.getElementById("diskIOWriteMode").value);
@@ -3212,8 +3212,8 @@ Use ';' to split multiple entries. Can use wildcard '*'.)QBT_TR[CONTEXT=OptionsD
             settings["send_buffer_low_watermark"] = Number(document.getElementById("sendBufferLowWatermark").value);
             settings["send_buffer_watermark_factor"] = Number(document.getElementById("sendBufferWatermarkFactor").value);
             settings["connection_speed"] = Number(document.getElementById("connectionSpeed").value);
-            settings["socket_send_buffer_size"] = (document.getElementById("socketSendBufferSize").value * 1024);
-            settings["socket_receive_buffer_size"] = (document.getElementById("socketReceiveBufferSize").value * 1024);
+            settings["socket_send_buffer_size"] = (document.getElementById("socketSendBufferSize").value * 1000);
+            settings["socket_receive_buffer_size"] = (document.getElementById("socketReceiveBufferSize").value * 1000);
             settings["socket_backlog_size"] = Number(document.getElementById("socketBacklogSize").value);
             settings["outgoing_ports_min"] = Number(document.getElementById("outgoingPortsMin").value);
             settings["outgoing_ports_max"] = Number(document.getElementById("outgoingPortsMax").value);

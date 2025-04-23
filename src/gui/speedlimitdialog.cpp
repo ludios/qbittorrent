@@ -70,17 +70,17 @@ SpeedLimitDialog::SpeedLimitDialog(QWidget *parent)
         slider->setValue(value);
     };
     const auto *session = BitTorrent::Session::instance();
-    const int uploadVal = std::max(0, (session->globalUploadSpeedLimit() / 1024));
-    const int downloadVal = std::max(0, (session->globalDownloadSpeedLimit() / 1024));
-    const int maxUpload = std::max(10000, (session->globalUploadSpeedLimit() / 1024));
-    const int maxDownload = std::max(10000, (session->globalDownloadSpeedLimit() / 1024));
+    const int uploadVal = std::max(0, (session->globalUploadSpeedLimit() / 1000));
+    const int downloadVal = std::max(0, (session->globalDownloadSpeedLimit() / 1000));
+    const int maxUpload = std::max(10000, (session->globalUploadSpeedLimit() / 1000));
+    const int maxDownload = std::max(10000, (session->globalDownloadSpeedLimit() / 1000));
     initSlider(m_ui->sliderUploadLimit, uploadVal, maxUpload);
     initSlider(m_ui->sliderDownloadLimit, downloadVal, maxDownload);
 
-    const int altUploadVal = std::max(0, (session->altGlobalUploadSpeedLimit() / 1024));
-    const int altDownloadVal = std::max(0, (session->altGlobalDownloadSpeedLimit() / 1024));
-    const int altMaxUpload = std::max(10000, (session->altGlobalUploadSpeedLimit() / 1024));
-    const int altMaxDownload = std::max(10000, (session->altGlobalDownloadSpeedLimit() / 1024));
+    const int altUploadVal = std::max(0, (session->altGlobalUploadSpeedLimit() / 1000));
+    const int altDownloadVal = std::max(0, (session->altGlobalDownloadSpeedLimit() / 1000));
+    const int altMaxUpload = std::max(10000, (session->altGlobalUploadSpeedLimit() / 1000));
+    const int altMaxDownload = std::max(10000, (session->altGlobalDownloadSpeedLimit() / 1000));
     initSlider(m_ui->sliderAltUploadLimit, altUploadVal, altMaxUpload);
     initSlider(m_ui->sliderAltDownloadLimit, altDownloadVal, altMaxDownload);
 
@@ -124,19 +124,19 @@ SpeedLimitDialog::~SpeedLimitDialog()
 void SpeedLimitDialog::accept()
 {
     auto *session = BitTorrent::Session::instance();
-    const int uploadLimit = (m_ui->spinUploadLimit->value() * 1024);
+    const int uploadLimit = (m_ui->spinUploadLimit->value() * 1000);
     if (m_initialValues.uploadSpeedLimit != m_ui->spinUploadLimit->value())
         session->setGlobalUploadSpeedLimit(uploadLimit);
 
-    const int downloadLimit = (m_ui->spinDownloadLimit->value() * 1024);
+    const int downloadLimit = (m_ui->spinDownloadLimit->value() * 1000);
     if (m_initialValues.downloadSpeedLimit != m_ui->spinDownloadLimit->value())
         session->setGlobalDownloadSpeedLimit(downloadLimit);
 
-    const int altUploadLimit = (m_ui->spinAltUploadLimit->value() * 1024);
+    const int altUploadLimit = (m_ui->spinAltUploadLimit->value() * 1000);
     if (m_initialValues.altUploadSpeedLimit != m_ui->spinAltUploadLimit->value())
         session->setAltGlobalUploadSpeedLimit(altUploadLimit);
 
-    const int altDownloadLimit = (m_ui->spinAltDownloadLimit->value() * 1024);
+    const int altDownloadLimit = (m_ui->spinAltDownloadLimit->value() * 1000);
     if (m_initialValues.altDownloadSpeedLimit != m_ui->spinAltDownloadLimit->value())
         session->setAltGlobalDownloadSpeedLimit(altDownloadLimit);
 

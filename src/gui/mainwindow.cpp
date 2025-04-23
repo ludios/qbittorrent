@@ -1891,8 +1891,8 @@ void MainWindow::refreshTrayIconTooltip()
     if (!btSession->isPaused())
     {
         const auto toolTip = u"%1\n%2"_s.arg(
-                tr("DL speed: %1", "e.g: Download speed: 10 KiB/s").arg(m_downloadRate)
-                , tr("UP speed: %1", "e.g: Upload speed: 10 KiB/s").arg(m_uploadRate));
+                tr("DL speed: %1", "e.g: Download speed: 10 KB/s").arg(m_downloadRate)
+                , tr("UP speed: %1", "e.g: Upload speed: 10 KB/s").arg(m_uploadRate));
         app()->desktopIntegration()->setToolTip(toolTip);
     }
     else

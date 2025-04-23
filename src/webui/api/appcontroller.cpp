@@ -160,7 +160,7 @@ void AppController::preferencesAction()
     data[u"file_log_enabled"_s] = app()->isFileLoggerEnabled();
     data[u"file_log_path"_s] = app()->fileLoggerPath().toString();
     data[u"file_log_backup_enabled"_s] = app()->isFileLoggerBackup();
-    data[u"file_log_max_size"_s] = app()->fileLoggerMaxSize() / 1024;
+    data[u"file_log_max_size"_s] = app()->fileLoggerMaxSize() / 1000;
     data[u"file_log_delete_old"_s] = app()->isFileLoggerDeleteOld();
     data[u"file_log_age"_s] = app()->fileLoggerAge();
     data[u"file_log_age_type"_s] = app()->fileLoggerAgeType();
@@ -561,7 +561,7 @@ void AppController::setPreferencesAction()
     if (hasKey(u"file_log_backup_enabled"_s))
         app()->setFileLoggerBackup(it.value().toBool());
     if (hasKey(u"file_log_max_size"_s))
-        app()->setFileLoggerMaxSize(it.value().toInt() * 1024);
+        app()->setFileLoggerMaxSize(it.value().toInt() * 1000);
     if (hasKey(u"file_log_delete_old"_s))
         app()->setFileLoggerDeleteOld(it.value().toBool());
     if (hasKey(u"file_log_age"_s))

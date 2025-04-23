@@ -63,9 +63,9 @@ namespace
         if (value <= 12.0) return {12, SizeUnit::Byte};
 
         SizeUnit calculatedUnit = SizeUnit::Byte;
-        while (value > 1024)
+        while (value > 1000)
         {
-            value /= 1024;
+            value /= 1000;
             calculatedUnit = static_cast<SizeUnit>(static_cast<int>(calculatedUnit) + 1);
         }
 

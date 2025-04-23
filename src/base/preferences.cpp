@@ -322,7 +322,7 @@ void Preferences::setIconsInMenusEnabled(const bool enable)
 
 qint64 Preferences::getTorrentFileSizeLimit() const
 {
-    return value(u"BitTorrent/TorrentFileSizeLimit"_s, (100 * 1024 * 1024));
+    return value(u"BitTorrent/TorrentFileSizeLimit"_s, (100 * 1000 * 1000));
 }
 
 void Preferences::setTorrentFileSizeLimit(const qint64 value)
