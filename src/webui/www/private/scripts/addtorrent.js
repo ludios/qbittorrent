@@ -304,6 +304,7 @@ window.qBittorrent.AddTorrent ??= (() => {
 
     const submitForm = () => {
         document.getElementById("startTorrentHidden").value = document.getElementById("startTorrent").checked ? "false" : "true";
+        document.getElementById("sequentialDownloadHidden").value = document.getElementById("sequentialDownload").checked ? "true" : "false";
 
         document.getElementById("dlLimitHidden").value = Number(document.getElementById("dlLimitText").value) * 1000;
         document.getElementById("upLimitHidden").value = Number(document.getElementById("upLimitText").value) * 1000;
