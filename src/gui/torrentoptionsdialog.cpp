@@ -242,14 +242,14 @@ TorrentOptionsDialog::TorrentOptionsDialog(QWidget *parent, const QList<BitTorre
 
     const bool isAltLimitEnabled = session->isAltGlobalSpeedLimitEnabled();
     const int globalUploadLimit = isAltLimitEnabled
-            ? (session->altGlobalUploadSpeedLimit() / 1024)
-            : (session->globalUploadSpeedLimit() / 1024);
+            ? (session->altGlobalUploadSpeedLimit() / 1000)
+            : (session->globalUploadSpeedLimit() / 1000);
     const int globalDownloadLimit = isAltLimitEnabled
-            ? (session->altGlobalDownloadSpeedLimit() / 1024)
-            : (session->globalDownloadSpeedLimit() / 1024);
+            ? (session->altGlobalDownloadSpeedLimit() / 1000)
+            : (session->globalDownloadSpeedLimit() / 1000);
 
-    const int uploadVal = std::max(0, (firstTorrentUpLimit / 1024));
-    const int downloadVal = std::max(0, (firstTorrentDownLimit / 1024));
+    const int uploadVal = std::max(0, (firstTorrentUpLimit / 1000));
+    const int downloadVal = std::max(0, (firstTorrentDownLimit / 1000));
     int maxUpload = (globalUploadLimit <= 0) ? 10000 : globalUploadLimit;
     int maxDownload = (globalDownloadLimit <= 0) ? 10000 : globalDownloadLimit;
 
@@ -433,9 +433,9 @@ void TorrentOptionsDialog::accept()
         }
 
         if (m_initialValues.upSpeedLimit != m_ui->spinUploadLimit->value())
-            torrent->setUploadLimit(m_ui->spinUploadLimit->value() * 1024);
+            torrent->setUploadLimit(m_ui->spinUploadLimit->value() * 1000);
         if (m_initialValues.downSpeedLimit != m_ui->spinDownloadLimit->value())
-            torrent->setDownloadLimit(m_ui->spinDownloadLimit->value() * 1024);
+            torrent->setDownloadLimit(m_ui->spinDownloadLimit->value() * 1000);
 
         if (const std::optional<qreal> ratioLimit = m_ui->torrentShareLimitsWidget->ratioLimit();
                 m_initialValues.ratio != ratioLimit)

@@ -81,7 +81,7 @@ window.qBittorrent.Search ??= (() => {
     };
     const searchSizeFilter = {
         min: 0,
-        minUnit: 2, // B = 0, KiB = 1, MiB = 2, GiB = 3, TiB = 4, PiB = 5, EiB = 6
+        minUnit: 2, // B = 0, KB = 1, MB = 2, GB = 3, TB = 4, PB = 5, EB = 6
         max: 0,
         maxUnit: 3
     };
@@ -850,7 +850,7 @@ window.qBittorrent.Search ??= (() => {
         document.getElementById("searchMaxSeedsFilter").value = searchSeedsFilter.max;
 
         searchSizeFilter.min = 0;
-        searchSizeFilter.minUnit = 2; // B = 0, KiB = 1, MiB = 2, GiB = 3, TiB = 4, PiB = 5, EiB = 6
+        searchSizeFilter.minUnit = 2; // B = 0, KB = 1, MB = 2, GB = 3, TB = 4, PB = 5, EB = 6
         searchSizeFilter.max = 0;
         searchSizeFilter.maxUnit = 3;
         document.getElementById("searchMinSizeFilter").value = searchSizeFilter.min;

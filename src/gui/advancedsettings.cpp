@@ -236,7 +236,7 @@ void AdvancedSettings::saveAdvancedSettings() const
     session->setDiskCacheTTL(m_spinBoxCacheTTL.value());
 #endif
     // Disk queue size
-    session->setDiskQueueSize(m_spinBoxDiskQueueSize.value() * 1024);
+    session->setDiskQueueSize(m_spinBoxDiskQueueSize.value() * 1000);
 #ifdef QBT_USES_LIBTORRENT2
     session->setDiskIOType(m_comboBoxDiskIOType.currentData().value<BitTorrent::DiskIOType>());
 #endif
@@ -259,9 +259,9 @@ void AdvancedSettings::saveAdvancedSettings() const
     // Outgoing connections per second
     session->setConnectionSpeed(m_spinBoxConnectionSpeed.value());
     // Socket send buffer size
-    session->setSocketSendBufferSize(m_spinBoxSocketSendBufferSize.value() * 1024);
+    session->setSocketSendBufferSize(m_spinBoxSocketSendBufferSize.value() * 1000);
     // Socket receive buffer size
-    session->setSocketReceiveBufferSize(m_spinBoxSocketReceiveBufferSize.value() * 1024);
+    session->setSocketReceiveBufferSize(m_spinBoxSocketReceiveBufferSize.value() * 1000);
     // Socket listen backlog size
     session->setSocketBacklogSize(m_spinBoxSocketBacklogSize.value());
     // Save resume data interval
@@ -269,7 +269,7 @@ void AdvancedSettings::saveAdvancedSettings() const
     // Save statistics interval
     session->setSaveStatisticsInterval(std::chrono::minutes(m_spinBoxSaveStatisticsInterval.value()));
     // .torrent file size limit
-    pref->setTorrentFileSizeLimit(m_spinBoxTorrentFileSizeLimit.value() * 1024 * 1024);
+    pref->setTorrentFileSizeLimit(m_spinBoxTorrentFileSizeLimit.value() * 1000 * 1000);
     // Outgoing ports
     session->setOutgoingPortsMin(m_spinBoxOutgoingPortsMin.value());
     session->setOutgoingPortsMax(m_spinBoxOutgoingPortsMax.value());
@@ -391,7 +391,7 @@ void AdvancedSettings::updateCacheSpinSuffix(const int value)
     else if (value < 0)
         m_spinBoxCache.setSuffix(tr(" (auto)"));
     else
-        m_spinBoxCache.setSuffix(tr(" MiB"));
+        m_spinBoxCache.setSuffix(tr(" MB"));
 }
 #endif
 
@@ -498,7 +498,7 @@ void AdvancedSettings::loadAdvancedSettings()
     // Physical memory (RAM) usage limit
     m_spinBoxMemoryWorkingSetLimit.setMinimum(1);
     m_spinBoxMemoryWorkingSetLimit.setMaximum(std::numeric_limits<int>::max());
-    m_spinBoxMemoryWorkingSetLimit.setSuffix(tr(" MiB"));
+    m_spinBoxMemoryWorkingSetLimit.setSuffix(tr(" MB"));
     m_spinBoxMemoryWorkingSetLimit.setValue(app()->memoryWorkingSetLimit());
     addRow(MEMORY_WORKING_SET_LIMIT, (tr("Physical memory (RAM) usage limit") + u' ' + makeLink(u"https://wikipedia.org/wiki/Working_set", u"(?)"))
         , &m_spinBoxMemoryWorkingSetLimit);
@@ -559,7 +559,7 @@ void AdvancedSettings::loadAdvancedSettings()
     m_spinBoxCheckingMemUsage.setMaximum(128);
 #endif
     m_spinBoxCheckingMemUsage.setValue(session->checkingMemUsage());
-    m_spinBoxCheckingMemUsage.setSuffix(tr(" MiB"));
+    m_spinBoxCheckingMemUsage.setSuffix(tr(" MB"));
     addRow(CHECKING_MEM_USAGE, (tr("Outstanding memory when checking torrents") + u' ' + makeLink(u"https://www.libtorrent.org/reference-Settings.html#checking_mem_usage", u"(?)"))
             , &m_spinBoxCheckingMemUsage);
 #ifndef QBT_USES_LIBTORRENT2
@@ -569,7 +569,7 @@ void AdvancedSettings::loadAdvancedSettings()
 #ifdef QBT_APP_64BIT
     m_spinBoxCache.setMaximum(33554431);  // 32768GiB
 #else
-    // allocate 1536MiB and leave 512MiB to the rest of program data in RAM
+    // allocate 1536MB and leave 512MB to the rest of program data in RAM
     m_spinBoxCache.setMaximum(1536);
 #endif
     m_spinBoxCache.setValue(session->diskCacheSize());
@@ -588,9 +588,9 @@ void AdvancedSettings::loadAdvancedSettings()
 #endif
     // Disk queue size
     m_spinBoxDiskQueueSize.setMinimum(1);
-    m_spinBoxDiskQueueSize.setMaximum(std::numeric_limits<int>::max() / 1024);
-    m_spinBoxDiskQueueSize.setValue(session->diskQueueSize() / 1024);
-    m_spinBoxDiskQueueSize.setSuffix(tr(" KiB"));
+    m_spinBoxDiskQueueSize.setMaximum(std::numeric_limits<int>::max() / 1000);
+    m_spinBoxDiskQueueSize.setValue(session->diskQueueSize() / 1000);
+    m_spinBoxDiskQueueSize.setSuffix(tr(" KB"));
     addRow(DISK_QUEUE_SIZE, (tr("Disk queue size") + u' ' + makeLink(u"https://www.libtorrent.org/reference-Settings.html#max_queued_disk_bytes", u"(?)"))
             , &m_spinBoxDiskQueueSize);
 #ifdef QBT_USES_LIBTORRENT2
@@ -634,13 +634,13 @@ void AdvancedSettings::loadAdvancedSettings()
     // Send buffer watermark
     m_spinBoxSendBufferWatermark.setMinimum(1);
     m_spinBoxSendBufferWatermark.setMaximum(std::numeric_limits<int>::max());
-    m_spinBoxSendBufferWatermark.setSuffix(tr(" KiB"));
+    m_spinBoxSendBufferWatermark.setSuffix(tr(" KB"));
     m_spinBoxSendBufferWatermark.setValue(session->sendBufferWatermark());
     addRow(SEND_BUF_WATERMARK, (tr("Send buffer watermark") + u' ' + makeLink(u"https://www.libtorrent.org/reference-Settings.html#send_buffer_watermark", u"(?)"))
             , &m_spinBoxSendBufferWatermark);
     m_spinBoxSendBufferLowWatermark.setMinimum(1);
     m_spinBoxSendBufferLowWatermark.setMaximum(std::numeric_limits<int>::max());
-    m_spinBoxSendBufferLowWatermark.setSuffix(tr(" KiB"));
+    m_spinBoxSendBufferLowWatermark.setSuffix(tr(" KB"));
     m_spinBoxSendBufferLowWatermark.setValue(session->sendBufferLowWatermark());
     addRow(SEND_BUF_LOW_WATERMARK, (tr("Send buffer low watermark") + u' ' + makeLink(u"https://www.libtorrent.org/reference-Settings.html#send_buffer_low_watermark", u"(?)"))
             , &m_spinBoxSendBufferLowWatermark);
@@ -658,17 +658,17 @@ void AdvancedSettings::loadAdvancedSettings()
             , &m_spinBoxConnectionSpeed);
     // Socket send buffer size
     m_spinBoxSocketSendBufferSize.setMinimum(0);
-    m_spinBoxSocketSendBufferSize.setMaximum(std::numeric_limits<int>::max() / 1024);
-    m_spinBoxSocketSendBufferSize.setValue(session->socketSendBufferSize() / 1024);
-    m_spinBoxSocketSendBufferSize.setSuffix(tr(" KiB"));
+    m_spinBoxSocketSendBufferSize.setMaximum(std::numeric_limits<int>::max() / 1000);
+    m_spinBoxSocketSendBufferSize.setValue(session->socketSendBufferSize() / 1000);
+    m_spinBoxSocketSendBufferSize.setSuffix(tr(" KB"));
     m_spinBoxSocketSendBufferSize.setSpecialValueText(tr("0 (system default)"));
     addRow(SOCKET_SEND_BUFFER_SIZE, (tr("Socket send buffer size [0: system default]") + u' ' + makeLink(u"https://www.libtorrent.org/reference-Settings.html#send_socket_buffer_size", u"(?)"))
             , &m_spinBoxSocketSendBufferSize);
     // Socket receive buffer size
     m_spinBoxSocketReceiveBufferSize.setMinimum(0);
-    m_spinBoxSocketReceiveBufferSize.setMaximum(std::numeric_limits<int>::max() / 1024);
-    m_spinBoxSocketReceiveBufferSize.setValue(session->socketReceiveBufferSize() / 1024);
-    m_spinBoxSocketReceiveBufferSize.setSuffix(tr(" KiB"));
+    m_spinBoxSocketReceiveBufferSize.setMaximum(std::numeric_limits<int>::max() / 1000);
+    m_spinBoxSocketReceiveBufferSize.setValue(session->socketReceiveBufferSize() / 1000);
+    m_spinBoxSocketReceiveBufferSize.setSuffix(tr(" KB"));
     m_spinBoxSocketReceiveBufferSize.setSpecialValueText(tr("0 (system default)"));
     addRow(SOCKET_RECEIVE_BUFFER_SIZE, (tr("Socket receive buffer size [0: system default]") + u' ' + makeLink(u"https://www.libtorrent.org/reference-Settings.html#recv_socket_buffer_size", u"(?)"))
             , &m_spinBoxSocketReceiveBufferSize);
@@ -694,9 +694,9 @@ void AdvancedSettings::loadAdvancedSettings()
     addRow(SAVE_STATISTICS_INTERVAL, tr("Save statistics interval [0: disabled]", "How often the statistics file is saved."), &m_spinBoxSaveStatisticsInterval);
     // .torrent file size limit
     m_spinBoxTorrentFileSizeLimit.setMinimum(1);
-    m_spinBoxTorrentFileSizeLimit.setMaximum(std::numeric_limits<int>::max() / 1024 / 1024);
-    m_spinBoxTorrentFileSizeLimit.setValue(pref->getTorrentFileSizeLimit() / 1024 / 1024);
-    m_spinBoxTorrentFileSizeLimit.setSuffix(tr(" MiB"));
+    m_spinBoxTorrentFileSizeLimit.setMaximum(std::numeric_limits<int>::max() / 1000 / 1000);
+    m_spinBoxTorrentFileSizeLimit.setValue(pref->getTorrentFileSizeLimit() / 1000 / 1000);
+    m_spinBoxTorrentFileSizeLimit.setSuffix(tr(" MB"));
     addRow(TORRENT_FILE_SIZE_LIMIT, tr(".torrent file size limit"), &m_spinBoxTorrentFileSizeLimit);
     // Outgoing port Min
     m_spinBoxOutgoingPortsMin.setMinimum(0);

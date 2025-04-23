@@ -119,12 +119,12 @@ namespace
 
     const Path DEFAULT_PORTABLE_MODE_PROFILE_DIR {u"profile"_s};
 
-    const int MIN_FILELOG_SIZE = 1024; // 1KiB
-    const int MAX_FILELOG_SIZE = 1000 * 1024 * 1024; // 1000MiB
-    const int DEFAULT_FILELOG_SIZE = 65 * 1024; // 65KiB
+    const int MIN_FILELOG_SIZE = 1000; // 1KB
+    const int MAX_FILELOG_SIZE = 1000 * 1000 * 1000; // 1000MB
+    const int DEFAULT_FILELOG_SIZE = 65 * 1000; // 65KB
 
 #ifndef DISABLE_GUI
-    const int PIXMAP_CACHE_SIZE = 64 * 1024 * 1024;  // 64MiB
+    const int PIXMAP_CACHE_SIZE = 64 * 1000 * 1000;  // 64MB
 #endif
 
     const QString PARAM_ADDSTOPPED = u"@addStopped"_s;
@@ -1218,12 +1218,12 @@ void Application::shutdownCleanup([[maybe_unused]] QSessionManager &manager)
 #if defined(QBT_USES_LIBTORRENT2) && !defined(Q_OS_LINUX) && !defined(Q_OS_MACOS)
 void Application::applyMemoryWorkingSetLimit() const
 {
-    const size_t MiB = 1024 * 1024;
+    const size_t MB = 1000 * 1000;
     const QString logMessage = tr("Failed to set physical memory (RAM) usage limit. Error code: %1. Error message: \"%2\"");
 
 #ifdef Q_OS_WIN
-    const SIZE_T maxSize = memoryWorkingSetLimit() * MiB;
-    const auto minSize = std::min<SIZE_T>((64 * MiB), (maxSize / 2));
+    const SIZE_T maxSize = memoryWorkingSetLimit() * MB;
+    const auto minSize = std::min<SIZE_T>((64 * MB), (maxSize / 2));
     if (!::SetProcessWorkingSetSizeEx(::GetCurrentProcess(), minSize, maxSize, QUOTA_LIMITS_HARDWS_MAX_ENABLE))
     {
         const DWORD errorCode = ::GetLastError();
@@ -1245,7 +1245,7 @@ void Application::applyMemoryWorkingSetLimit() const
     if (::getrlimit(RLIMIT_RSS, &limit) != 0)
         return;
 
-    const size_t newSize = memoryWorkingSetLimit() * MiB;
+    const size_t newSize = memoryWorkingSetLimit() * MB;
     if (newSize > limit.rlim_max)
     {
         // try to raise the hard limit

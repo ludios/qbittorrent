@@ -803,13 +803,13 @@
                  <item>
                   <widget class="QSpinBox" name="spinFileLogSize">
                    <property name="suffix">
-                    <string> KiB</string>
+                    <string> KB</string>
                    </property>
                    <property name="minimum">
                     <number>1</number>
                    </property>
                    <property name="maximum">
-                    <number>1024000</number>
+                    <number>1000000</number>
                    </property>
                    <property name="value">
                     <number>65</number>
@@ -2392,7 +2392,7 @@ readme[0-9].txt: filter 'readme1.txt', 'readme2.txt' but not 'readme10.txt'.</st
                   <string>∞</string>
                  </property>
                  <property name="suffix">
-                  <string> KiB/s</string>
+                  <string> KB/s</string>
                  </property>
                  <property name="maximum">
                   <number>2000000</number>
@@ -2431,7 +2431,7 @@ readme[0-9].txt: filter 'readme1.txt', 'readme2.txt' but not 'readme10.txt'.</st
                   <string>∞</string>
                  </property>
                  <property name="suffix">
-                  <string> KiB/s</string>
+                  <string> KB/s</string>
                  </property>
                  <property name="maximum">
                   <number>2000000</number>
@@ -2469,7 +2469,7 @@ readme[0-9].txt: filter 'readme1.txt', 'readme2.txt' but not 'readme10.txt'.</st
                   <string>∞</string>
                  </property>
                  <property name="suffix">
-                  <string> KiB/s</string>
+                  <string> KB/s</string>
                  </property>
                  <property name="maximum">
                   <number>2000000</number>
@@ -2508,7 +2508,7 @@ readme[0-9].txt: filter 'readme1.txt', 'readme2.txt' but not 'readme10.txt'.</st
                   <string>∞</string>
                  </property>
                  <property name="suffix">
-                  <string> KiB/s</string>
+                  <string> KB/s</string>
                  </property>
                  <property name="maximum">
                   <number>2000000</number>
@@ -2999,7 +2999,7 @@ Disable encryption: Only connect to peers without protocol encryption</string>
                   <item row="0" column="1">
                    <widget class="QSpinBox" name="spinDownloadRateForSlowTorrents">
                     <property name="suffix">
-                     <string> KiB/s</string>
+                     <string> KB/s</string>
                     </property>
                     <property name="maximum">
                      <number>2000000</number>
@@ -3035,7 +3035,7 @@ Disable encryption: Only connect to peers without protocol encryption</string>
                   <item row="1" column="1">
                    <widget class="QSpinBox" name="spinUploadRateForSlowTorrents">
                     <property name="suffix">
-                     <string> KiB/s</string>
+                     <string> KB/s</string>
                     </property>
                     <property name="maximum">
                      <number>2000000</number>

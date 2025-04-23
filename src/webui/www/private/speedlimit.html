@@ -63,7 +63,7 @@
             };
 
             applyButton.addEventListener("click", (event) => {
-                const limit = Number(limitUpdateValue.value) * 1024;
+                const limit = Number(limitUpdateValue.value) * 1000;
                 if (isGlobal) {
                     fetch(`api/v2/transfer/${setLimitMethod}`, {
                             method: "POST",
@@ -111,7 +111,7 @@
 
                     const data = await response.text();
 
-                    const globalLimit = Math.max((Number(data) / 1024), 0);
+                    const globalLimit = Math.max((Number(data) / 1000), 0);
 
                     // Get torrents download limit
                     // And create slider
@@ -133,7 +133,7 @@
 
                                 const firstLimit = Math.max(data[hashes[0]], 0);
                                 const isAllFirstLimit = Object.values(data).every(value => value === firstLimit);
-                                const limit = isAllFirstLimit ? Math.round(firstLimit / 1024) : 0;
+                                const limit = isAllFirstLimit ? Math.round(firstLimit / 1000) : 0;
 
                                 setupSlider(limit, ((globalLimit > 0) ? globalLimit : 1000));
                             });
@@ -151,7 +151,7 @@
             <div class="update">
                 <label id="limitUpdateLabel" for="limitUpdateValue">QBT_TR(Limit:)QBT_TR[CONTEXT=SpeedLimit]</label>
                 <input type="text" id="limitUpdateValue" size="6" placeholder="∞" style="text-align: center;">
-                <span id="limitUnit">QBT_TR(KiB/s)QBT_TR[CONTEXT=SpeedLimit]</span>
+                <span id="limitUnit">KB/s</span>
             </div>
             <input type="range" id="limitSliderInput" min="0" value="0" style="width: 100%;" aria-label="QBT_TR(Speed limit)QBT_TR[CONTEXT=SpeedLimit]">
         </div>

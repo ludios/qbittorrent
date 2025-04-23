@@ -2003,8 +2003,8 @@ window.qBittorrent.DynamicTable ??= (() => {
 
         getFilteredAndSortedRows() {
             const getSizeFilters = () => {
-                let minSize = (window.qBittorrent.Search.searchSizeFilter.min > 0) ? (window.qBittorrent.Search.searchSizeFilter.min * Math.pow(1024, window.qBittorrent.Search.searchSizeFilter.minUnit)) : 0;
-                let maxSize = (window.qBittorrent.Search.searchSizeFilter.max > 0) ? (window.qBittorrent.Search.searchSizeFilter.max * Math.pow(1024, window.qBittorrent.Search.searchSizeFilter.maxUnit)) : 0;
+                let minSize = (window.qBittorrent.Search.searchSizeFilter.min > 0) ? (window.qBittorrent.Search.searchSizeFilter.min * Math.pow(1000, window.qBittorrent.Search.searchSizeFilter.minUnit)) : 0;
+                let maxSize = (window.qBittorrent.Search.searchSizeFilter.max > 0) ? (window.qBittorrent.Search.searchSizeFilter.max * Math.pow(1000, window.qBittorrent.Search.searchSizeFilter.maxUnit)) : 0;
 
                 if ((minSize > maxSize) && (maxSize > 0)) {
                     const tmp = minSize;

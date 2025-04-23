@@ -95,30 +95,30 @@ window.qBittorrent.Misc ??= (() => {
      */
     const friendlyUnit = (value, isSpeed) => {
         if ((value === undefined) || (value === null) || Number.isNaN(value) || (value < 0))
-            return "QBT_TR(Unknown)QBT_TR[CONTEXT=misc]";
+            return "Unknown";
 
         const units = [
-            "QBT_TR(B)QBT_TR[CONTEXT=misc]",
-            "QBT_TR(KiB)QBT_TR[CONTEXT=misc]",
-            "QBT_TR(MiB)QBT_TR[CONTEXT=misc]",
-            "QBT_TR(GiB)QBT_TR[CONTEXT=misc]",
-            "QBT_TR(TiB)QBT_TR[CONTEXT=misc]",
-            "QBT_TR(PiB)QBT_TR[CONTEXT=misc]",
-            "QBT_TR(EiB)QBT_TR[CONTEXT=misc]"
+            "B",
+            "KB",
+            "MB",
+            "GB",
+            "TB",
+            "PB",
+            "EB"
         ];
 
         const friendlyUnitPrecision = (sizeUnit) => {
-            if (sizeUnit <= 2) // KiB, MiB
+            if (sizeUnit <= 2) // KB, MB
                 return 1;
-            else if (sizeUnit === 3) // GiB
+            else if (sizeUnit === 3) // GB
                 return 2;
-            else // TiB, PiB, EiB
+            else // TB, PB, EB
                 return 3;
         };
 
         let i = 0;
-        while ((value >= 1024) && (i < 6)) {
-            value /= 1024;
+        while ((value >= 1000) && (i < 6)) {
+            value /= 1000;
             ++i;
         }
 
@@ -133,7 +133,7 @@ window.qBittorrent.Misc ??= (() => {
         }
 
         if (isSpeed)
-            ret += "QBT_TR(/s)QBT_TR[CONTEXT=misc]";
+            ret += "/s";
         return ret;
     };
 
