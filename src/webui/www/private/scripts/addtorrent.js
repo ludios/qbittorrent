@@ -89,7 +89,7 @@ window.qBittorrent.AddTorrent ??= (() => {
     const getPreferences = () => {
         const pref = window.parent.qBittorrent.Cache.preferences.get();
 
-        defaultSavePath = pref.save_path;
+        defaultSavePath = pref.save_path + "/";
         defaultTempPath = pref.temp_path;
         defaultTempPathEnabled = pref.temp_path_enabled;
         document.getElementById("startTorrent").checked = !pref.add_stopped_enabled;
