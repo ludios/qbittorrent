@@ -9,7 +9,7 @@
     --color-text-green: hsl(110deg 94% 27%);
     --color-text-white: hsl(0deg 0% 100%);
     --color-text-disabled: hsl(0deg 0% 60%);
-    --color-text-default: hsl(0deg 0% 33%);
+    --color-text-default: #000;
     --color-background-primary: hsl(0deg 0% 100%);
     --color-background-blue: hsl(210deg 65% 55%);
     --color-background-popup: hsl(0deg 0% 100%);
