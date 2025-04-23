@@ -40,7 +40,6 @@
 
 class QCloseEvent;
 class QComboBox;
-class QFileSystemWatcher;
 class QSplitter;
 class QString;
 class QTabWidget;
@@ -118,7 +117,6 @@ private slots:
     bool defineUILockPassword();
     void clearUILockPassword();
     bool unlockUI();
-    void notifyOfUpdate(const QString &);
     void showConnectionSettings();
     void minimizeWindow();
     // Keyboard shortcuts
@@ -216,7 +214,6 @@ private:
     bool m_posInitialized = false;
     bool m_neverShown = true;
 
-    QFileSystemWatcher *m_executableWatcher = nullptr;
     // GUI related
     QPointer<QTabWidget> m_tabs;
     QPointer<StatusBar> m_statusBar;
