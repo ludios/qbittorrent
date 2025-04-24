@@ -93,19 +93,6 @@ ol {
     list-style: none;
 }
 
-/* Scrollbars */
-
-@supports (scrollbar-width: auto) and (selector(::-webkit-scrollbar)) {
-    :root[slick-uniqueid], /* targets iframe mocha dialogs */
-    .dynamicTableDiv,
-    .mochaContentWrapper,
-    .panel,
-    .scrollableMenu,
-    #rssDetailsView {
-        scrollbar-width: thin;
-    }
-}
-
 /* Forms */
 
 input[type="search"],
