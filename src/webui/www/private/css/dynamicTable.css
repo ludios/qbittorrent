@@ -8,10 +8,6 @@
     background-color: var(--color-background-default);
 }
 
-#transferList .dynamicTable td {
-    padding: 2px;
-}
-
 :root.compact .dynamicTable td {
     padding-bottom: 4px;
     padding-top: 4px;
@@ -122,7 +118,6 @@
 }
 
 .dynamicTable td {
-    padding: 4px 2px;
     white-space: nowrap;
 }
 
