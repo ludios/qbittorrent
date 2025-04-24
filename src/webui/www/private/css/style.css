@@ -623,7 +623,6 @@ ul.filterList span.link {
     display: flex;
     gap: 5px;
     overflow: hidden;
-    padding: 4px 6px;
     white-space: nowrap;
 }
 
